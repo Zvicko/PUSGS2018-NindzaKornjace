@@ -5,7 +5,7 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RentApp.Persistance.Repository
+namespace RentApp.Persistance.Repository.Interfaces
 {
     public interface IRepository<TEntity, TPKey> where TEntity : class
     {
