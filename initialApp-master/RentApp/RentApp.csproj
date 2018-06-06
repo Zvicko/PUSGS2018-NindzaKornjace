@@ -264,6 +264,7 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AppUsersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ServicesController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
@@ -304,6 +305,7 @@
     <Compile Include="Persistance\Repository\Interfaces\IVehicleTypeRepository.cs" />
     <Compile Include="Persistance\Repository\Repository.cs" />
     <Compile Include="Persistance\Repository\ReservationRepository.cs" />
+    <Compile Include="Persistance\Repository\ServiceRepository.cs" />
     <Compile Include="Persistance\Repository\VehicleRepository.cs" />
     <Compile Include="Persistance\Repository\VehicleTypeRepository.cs" />
     <Compile Include="Persistance\UnitOfWork\IUnitOfWork.cs" />

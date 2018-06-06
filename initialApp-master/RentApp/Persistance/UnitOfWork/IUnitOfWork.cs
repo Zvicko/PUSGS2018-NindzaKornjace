@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RentApp.Persistance.Repository.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,7 +9,13 @@ namespace RentApp.Persistance.UnitOfWork
 {
     public interface IUnitOfWork : IDisposable
     {
-        //IServiceRepository Services { get; set; }
+        IAppUserRepository AppUsers { get; set; }
+        IBranchOfficeRepository BranchOffices { get; set; }
+        IReservationRepository Reservations { get; set; }
+        IVehicleRepository Vehicles { get; set; }
+        IVehicleTypeRepository VehicleTypes { get; set; }
+        IServiceRepository Services { get; set; }
+
         int Complete();
     }
 }
