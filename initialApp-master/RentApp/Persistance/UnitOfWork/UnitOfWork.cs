@@ -18,17 +18,17 @@ namespace RentApp.Persistance.UnitOfWork
         {
             _context = context;
         }
-        [Dependency]
+        //[Dependency]
         public IAppUserRepository AppUsers { get; set; }
-        [Dependency]
+        //[Dependency]
         public IBranchOfficeRepository BranchOffices { get; set; }
-        [Dependency]
+        //[Dependency]
         public IReservationRepository Reservations { get; set; }
-        [Dependency]
+        //[Dependency]
         public IVehicleRepository Vehicles { get; set; }
-        [Dependency]
+        //[Dependency]
         public IVehicleTypeRepository VehicleTypes { get; set; }
-        [Dependency]
+        //[Dependency]
         public IServiceRepository Services { get; set; }
 
         public int Complete()
