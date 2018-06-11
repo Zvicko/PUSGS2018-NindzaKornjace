@@ -19,6 +19,11 @@ export class CreateAccountComponent implements OnInit {
   ngOnInit() {
   }
 
+  model: any = {};
+  onSubmit() {
+    alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.model))
+  }
+
   OnClick():void {
     this.router.navigate(["/create-account/{{this.Username}}/{{this.Password}}"]);
   }

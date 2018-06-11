@@ -1,14 +1,15 @@
 
 <div style="text-align: left">
     <h3 class="jumbotron bg-secondary text-white">Log in</h3>
-  </div>
+</div>
   
   <form clas="user-form">
   <div class="form-row">
     <div class="form-group col-md-6">
     
     <p>Username:</p>
-    <input  [(ngModel)]="this.Username" required>
+    <input  [(ngModel)]="this.Username" required minlength="5" maxlength="20">
+    
     
     <p>Password:</p>
     <input  [(ngModel)]="this.Password" type="password" required><br>
