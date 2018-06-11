@@ -1,12 +1,22 @@
-<p>
-  create-account works!
-</p>
+<div style="text-align: left">
+  <h3 class="jumbotron bg-secondary text-white">Create new account</h3>
+</div>
 
-  Username:<br>
-  <input  [(ngModel)]="this.Username" ><br>
-  Password:<br>
-  <input  [(ngModel)]="this.Password" ><br>
-  Confirm password:<br>
-  <input  [(ngModel)]="this.ConfirmPassword" ><br>
-  <button (click)="OnClick()">create-account</button>
- 
+<form clas="user-form">
+<div class="form-row">
+  <div class="form-group col-md-6">
+  
+  <p>Username:</p>
+  <input  [(ngModel)]="this.Username" required>
+  
+  <p>Password:</p>
+  <input  [(ngModel)]="this.Password" type="password" required><br>
+  
+  <p>Confirm password:</p>
+  <input  [(ngModel)]="this.ConfirmPassword"  type="password" required><br>
+  <br>
+  <button (click)="OnClick()">Create</button>
+  
+  </div>
+</div>
+</form>
