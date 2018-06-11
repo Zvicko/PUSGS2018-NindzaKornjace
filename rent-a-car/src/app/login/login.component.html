@@ -1,9 +1,21 @@
-<p>
-  login works!
-</p>
 
-Username:<br>
-<input  [(ngModel)]="this.Username" ><br>
-Password:<br>
-<input  [(ngModel)]="this.Password" ><br>
-<button (click)="OnClick()">login</button>
+<div style="text-align: left">
+    <h3 class="jumbotron bg-secondary text-white">Log in</h3>
+  </div>
+  
+  <form clas="user-form">
+  <div class="form-row">
+    <div class="form-group col-md-6">
+    
+    <p>Username:</p>
+    <input  [(ngModel)]="this.Username" required>
+    
+    <p>Password:</p>
+    <input  [(ngModel)]="this.Password" type="password" required><br>
+    
+    <br>
+    <button (click)="OnClick()">Create</button>
+    
+    </div>
+  </div>
+  </form>
