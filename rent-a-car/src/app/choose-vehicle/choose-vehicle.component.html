@@ -4,7 +4,7 @@
 <h3>Choose vehicle:</h3>
 <div>
   <a *ngFor="let vehicle of vehicles"
-      routerLink="/choose-ending-branch-office/{{this.id}}"
+      routerLink="/choose-ending-branch-office"
       (click)="OnClick(vehicle)">
       <img src="{{vehicle.ImageUrl}}"> <br>
       Model: <br>

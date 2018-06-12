@@ -12,18 +12,18 @@ import { Service } from '../service';
 export class ChooseServiceComponent implements OnInit {
 
   services:Service[];
-  id:number;
+  
 
   constructor(private dataService:DataService) { }
 
   ngOnInit() {
-    this.id=this.dataService.getSelectionSessionId();
+    
     this.services=this.dataService.getServices();
   }
 
   OnClick(service:Service)
   {
-    this.dataService.setService(this.id,service.Name);
+    this.dataService.setService(service.Name);
   }
 
 }

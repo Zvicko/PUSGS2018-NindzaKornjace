@@ -6,6 +6,7 @@ import { LoginComponent } from './login/login.component';
 import { ChooseStartingBranchOfficeComponent } from './choose-starting-branch-office/choose-starting-branch-office.component';
 import { ChooseEndingBranchOfficeComponent  } from './choose-ending-branch-office/choose-ending-branch-office.component';
 import { ChooseCarComponent } from './choose-vehicle/choose-vehicle.component';
+import { ChooseDatesComponent } from './choose-dates/choose-dates.component';
 
 
 
@@ -16,10 +17,10 @@ const routes: Routes = [
   { path: 'choose-service', component: ChooseServiceComponent },
   { path: 'create-account', component: CreateAccountComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'choose-starting-branch-office/:id', component: ChooseStartingBranchOfficeComponent },
-  { path: 'choose-vehicle/:id', component: ChooseCarComponent },
-  { path: 'choose-ending-branch-office/:id', component: ChooseEndingBranchOfficeComponent }
-  
+  { path: 'choose-starting-branch-office', component: ChooseStartingBranchOfficeComponent },
+  { path: 'choose-vehicle', component: ChooseCarComponent },
+  { path: 'choose-ending-branch-office', component: ChooseEndingBranchOfficeComponent },
+  { path: 'app-choose-dates', component: ChooseDatesComponent }
 ];
 
 @NgModule({

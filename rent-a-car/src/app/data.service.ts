@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
 import { SERVICES } from './mock-services';
-import {Service} from './service'
+import { Service } from './service'
 import { BranchOffice } from './branch-office';
 import { Vehicle } from './vehicle';
+import { User } from './user';
+import { USERS } from './mock-users';
 
 @Injectable({
   providedIn: 'root'
@@ -10,79 +12,92 @@ import { Vehicle } from './vehicle';
 export class DataService {
 
   services:Service[]=SERVICES;
-  counter:number=0;
-  selectionSessions:SelectionSession[]=[];
-
-
+  users:User[]=USERS;
+  reservation:Reservation=new Reservation();
+  logedInUser:User=null;
 
   constructor() { }
 
-  getSelectionSessionId():number
+  isLogedIn()
   {
-    this.counter++;
-    var V=new SelectionSession();
-    V.Id=this.counter;
-    this.selectionSessions.push(V);
-    return V.Id;
+    return this.logedInUser!==null;
   }
 
+
+  logIn(email:string,password:string):boolean
+  {
+    var V=this.users.find(x=>x.Email===email);
+      if(V.Password===password)
+      {
+          this.logedInUser=V;
+          return true;
+      }
+      else
+      {
+          return false;
+      }
+  }
+
+  logOut()
+  {
+    this.logedInUser=null;
+  }
 
   getServices():Service[]
   {
     return this.services;
   }
 
-  setService(id:number,serviceName:string)
+  setService(serviceName:string)
   {
-    this.selectionSessions.find(x=>x.Id===id).Service=this.services.find(x=>x.Name===serviceName);
+    this.reservation.Service=this.services.find(x=>x.Name===serviceName);
   }
 
-  getBranchOffices(id:number):BranchOffice[]
+  getBranchOffices():BranchOffice[]
   {
-     return this.selectionSessions.find(x=>x.Id===id).Service.BranchOffices;
+     return this.reservation.Service.BranchOffices;
   }
   
-  setStartBranchOffice(id:number,adress:string)
+  setStartBranchOffice(adress:string)
   {
-    var V=this.selectionSessions.find(x=>x.Id===id);
+    var V=this.reservation;
      V.StartBranchOffice= V.Service.BranchOffices.find(x=>x.Adress===adress);
   }
 
-  setEndBranchOffice(id:number,adress:string)
+  setEndBranchOffice(adress:string)
   {
-    var V=this.selectionSessions.find(x=>x.Id===id);
+    var V=this.reservation;
     V.EndBranchOffice= V.Service.BranchOffices.find(x=>x.Adress===adress);
   }
 
-  setStartDate(id:number,date:Date)
+  setStartDate(date:Date)
   {
-    this.selectionSessions.find(x=>x.Id===id).StartDate=date;
+    this.reservation.StartDate=date;
     
   }
 
-  setEndDate(id:number,date:Date)
+  setEndDate(date:Date)
   {
-    this.selectionSessions.find(x=>x.Id===id).EndDate=date;
+    this.reservation.EndDate=date;
     
   }
 
-  getVehicle(id:number):Vehicle[]
+  getVehicle():Vehicle[]
   {
-    return this.selectionSessions.find(x=>x.Id===id).StartBranchOffice.Vehicles;
+    return this.reservation.StartBranchOffice.Vehicles;
     
   }
 
-  setVehicle(id:number,model:string)
+  setVehicle(model:string)
   {
-    var V=this.selectionSessions.find(x=>x.Id===id);
+    var V=this.reservation;
     V.Vehicle=V.StartBranchOffice.Vehicles.find(x=>x.Model===model);
   }
 
 
 }
 
-export class SelectionSession{
-  Id:number;
+export class Reservation{
   Service:Service;
   StartBranchOffice:BranchOffice;
   Vehicle:Vehicle;

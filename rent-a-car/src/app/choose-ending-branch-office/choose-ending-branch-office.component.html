@@ -2,7 +2,7 @@
 <h3>Choose ending branch office:</h3>
 <div>
   <a *ngFor="let branchOffice of branchOffices"
-      routerLink="//{{this.id}}"
+      routerLink="/app-choose-dates"
       (click)="OnClick(branchOffice)">
       <img src="{{branchOffice.ImageUrl}}"> <br>
       Adress: <br>

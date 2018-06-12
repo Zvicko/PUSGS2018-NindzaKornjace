@@ -10,18 +10,17 @@ import { BranchOffice } from '../branch-office';
   styleUrls: ['./choose-starting-branch-office.component.css']
 })
 export class ChooseStartingBranchOfficeComponent implements OnInit {
-id:number;
-branchOffices:BranchOffice[];
+
+  branchOffices:BranchOffice[];
 
   constructor( private route: ActivatedRoute,private dataService:DataService) { }
 
   ngOnInit() {
-     this.id = +this.route.snapshot.paramMap.get('id');
-     this.branchOffices=this.dataService.getBranchOffices(this.id);
+     this.branchOffices=this.dataService.getBranchOffices();
   }
   OnClick(branchOfice:BranchOffice)
   {
-    this.dataService.setStartBranchOffice(this.id,branchOfice.Adress);
+    this.dataService.setStartBranchOffice(branchOfice.Adress);
   }
 
 }

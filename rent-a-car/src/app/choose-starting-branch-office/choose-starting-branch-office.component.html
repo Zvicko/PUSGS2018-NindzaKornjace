@@ -2,7 +2,7 @@
 <h3>Choose starting branch office:</h3>
 <div>
   <a *ngFor="let branchOffice of branchOffices"
-      routerLink="/choose-vehicle/{{this.id}}"
+      routerLink="/choose-vehicle"
       (click)="OnClick(branchOffice)">
       <img src="{{branchOffice.ImageUrl}}"> <br>
       Adress: <br>

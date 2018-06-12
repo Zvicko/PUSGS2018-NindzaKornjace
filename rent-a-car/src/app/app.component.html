@@ -3,8 +3,8 @@
 
 <nav class="navbar navbar-dark bg-dark">
   <a routerLink="/choose-service">choose-service</a>
-  <a routerLink="/create-account">Create account</a>
-  <a routerLink="/login">Login</a>
+  <a routerLink="/create-account" *ngIf="this.dataService.isLogedIn()===false">Create account</a>
+  <a routerLink="/login" *ngIf="this.dataService.isLogedIn()===false">Login</a>
 </nav>
 <router-outlet></router-outlet>
 </div>

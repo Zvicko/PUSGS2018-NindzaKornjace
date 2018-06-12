@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-
+import { Component, OnInit,Input } from '@angular/core';
 import {  Router } from '@angular/router';
+import { DataService } from '../data.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -8,15 +8,16 @@ import {  Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  Username:string;
-  Password:string;
+   email:string;
+   password:string;
 
-  constructor(private router:Router) { }
+  constructor(private router:Router,private dataService:DataService) { }
 
   ngOnInit() {
   }
 
   OnClick():void {
-    this.router.navigate(["/login/{{this.Username}}/{{this.Password}}"]);
+    this.dataService.logIn(this.email,this.password);
+    this.router.navigate(["/choose-service"]);
   }
 }

@@ -10,6 +10,7 @@ import { AppRoutingModule } from './/app-routing.module';
 import { ChooseStartingBranchOfficeComponent } from './choose-starting-branch-office/choose-starting-branch-office.component';
 import { ChooseCarComponent } from './choose-vehicle/choose-vehicle.component';
 import { ChooseEndingBranchOfficeComponent } from './choose-ending-branch-office/choose-ending-branch-office.component';
+import { ChooseDatesComponent } from './choose-dates/choose-dates.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { ChooseEndingBranchOfficeComponent } from './choose-ending-branch-office
     ChooseServiceComponent,
     ChooseStartingBranchOfficeComponent,
     ChooseCarComponent,
-    ChooseEndingBranchOfficeComponent
+    ChooseEndingBranchOfficeComponent,
+    ChooseDatesComponent
     
      //ReactiveFormsModule
   ],

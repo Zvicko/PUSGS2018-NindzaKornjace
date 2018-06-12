@@ -1,4 +1,10 @@
+import { Reservation } from "./data.service";
+
 export class User{
-    Username:string;
+    FirsName:string;
+    LastName:string
+    Email:string;
+    //BirthdDate:Date;
     Password:string;
+    Reservations:Reservation[];
 }
