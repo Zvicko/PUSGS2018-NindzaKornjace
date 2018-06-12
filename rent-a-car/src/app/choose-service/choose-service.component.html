@@ -1,3 +1,14 @@
-<p>
-  choose-service works!
-</p>
+<h3>Services:</h3>
+<div>
+  <a *ngFor="let service of services"
+      routerLink="/choose-starting-branch-office/{{this.id}}"
+      (click)="OnClick(service)">
+      <img src="{{service.LogoUrl}}"> <br>
+      Name: <br>
+      {{service.Name}} <br>
+      Email:<br>
+      {{service.Email}}<br>
+      Description:<br>
+      {{service.Description}}<br>
+  </a>
+</div>

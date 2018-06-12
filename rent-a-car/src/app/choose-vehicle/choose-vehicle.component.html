@@ -1,0 +1,21 @@
+<p>
+  choose-car works!
+</p>
+<h3>Choose vehicle:</h3>
+<div>
+  <a *ngFor="let vehicle of vehicles"
+      routerLink="/choose-ending-branch-office/{{this.id}}"
+      (click)="OnClick(vehicle)">
+      <img src="{{vehicle.ImageUrl}}"> <br>
+      Model: <br>
+      {{vehicle.Model}} <br>
+      Producer:<br>
+      {{vehicle.Producer}}<br>
+      Year of production:<br>
+      {{vehicle.YearOfProduction}}<br>
+      Description:<br>
+      {{vehicle.Description}}<br>
+
+      
+  </a>
+</div>

@@ -1,6 +1,6 @@
 import { User } from './user';
 
-export const Users: User[] = [
+export const USERS: User[] = [
   {
       Username:"admin",
       Password:"123"

@@ -1,5 +1,5 @@
 
-export class Car{
+export class Vehicle{
     IsAvailable:boolean;
     Model:string;
     Producer:string;

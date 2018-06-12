@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import {SERVICES} from '../mock-services';
+import {DataService} from '../data.service';
+import { Service } from '../service';
+
 
 @Component({
   selector: 'app-choose-service',
@@ -7,9 +11,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ChooseServiceComponent implements OnInit {
 
-  constructor() { }
+  services:Service[];
+  id:number;
+
+  constructor(private dataService:DataService) { }
 
   ngOnInit() {
+    this.id=this.dataService.getSelectionSessionId();
+    this.services=this.dataService.getServices();
+  }
+
+  OnClick(service:Service)
+  {
+    this.dataService.setService(this.id,service.Name);
   }
 
 }

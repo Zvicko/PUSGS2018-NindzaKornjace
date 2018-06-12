@@ -7,14 +7,21 @@ import { LoginComponent } from './login/login.component';
 import { CreateAccountComponent } from './create-account/create-account.component';
 import { ChooseServiceComponent } from './choose-service/choose-service.component';
 import { AppRoutingModule } from './/app-routing.module';
+import { ChooseStartingBranchOfficeComponent } from './choose-starting-branch-office/choose-starting-branch-office.component';
+import { ChooseCarComponent } from './choose-vehicle/choose-vehicle.component';
+import { ChooseEndingBranchOfficeComponent } from './choose-ending-branch-office/choose-ending-branch-office.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     CreateAccountComponent,
-    ChooseServiceComponent
-    // ReactiveFormsModule
+    ChooseServiceComponent,
+    ChooseStartingBranchOfficeComponent,
+    ChooseCarComponent,
+    ChooseEndingBranchOfficeComponent
+    
+     //ReactiveFormsModule
   ],
   imports: [
     BrowserModule,

@@ -1,20 +1,20 @@
 import {Service} from './service';
 import { BranchOffice } from './branch-office';
-import { Car } from './car';
+import { Vehicle } from './vehicle';
 
-export const Services: Service[] = [
+export const SERVICES: Service[] = [
     { 
-        Name:"Name",
+        Name:"Name 1",
         LogoUrl:"",
-        Email:"some.email.com",
+        Email:"some.email.com 1",
         Description:"Description 1",
-        BranchOffices: [
+        BranchOffices: BranchOffice[2]= [
             {
                 ImageUrl:"",
                 Adress:"Adress 1",
                 Longitude:23.123,
                 Latitude:34.234,
-                Cars:[
+                Vehicles:Vehicle[1]=[
                     {
                         IsAvailable:true,
                         Model:"Model 1",
@@ -31,7 +31,7 @@ export const Services: Service[] = [
                 Adress:"Adress 2",
                 Longitude:76.123,
                 Latitude:56.234,
-                Cars:[
+                Vehicles:Vehicle[1]=[
                     {
                         IsAvailable:true,
                         Model:"Model 2",
