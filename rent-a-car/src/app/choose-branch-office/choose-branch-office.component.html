@@ -1,28 +1,9 @@
-<<<<<<< HEAD:rent-a-car/src/app/choose-branch-office/choose-branch-office.component.html
-<p>
-  choose-branch-office works!
-</p>
 
-<h3>Choose branch office:</h3>
-<div>
-  <a *ngFor="let branchOffice of branchOffices"
-      routerLink={{next}}
-      (click)="OnClick(branchOffice)">
-      <img src="{{branchOffice.ImageUrl}}"> <br>
-      Adress: <br>
-      {{branchOffice.Adress}} <br>
-      Longitude:<br>
-      {{branchOffice.Longitude}}<br>
-      Latitude:<br>
-      {{branchOffice.Latitude}}<br>
-  </a>
-</div>
-=======
 <div class="jumbotron">
   <div class="container">
       <div class="row">
           <div class="col-md-6 offset-md-3">
-            <h3>Choose starting branch office:</h3>
+            <h3>Choose  branch office:</h3>
             
             <table class="table">
               <thead class="thead-dark">
@@ -35,7 +16,7 @@
               </thead>
               <tbody>
                 <tr *ngFor="let branchOffice of branchOffices"
-                routerLink="/choose-vehicle"
+                routerLink="{{next}}"
                 (click)="OnClick(branchOffice)">
                   <th scope="row"> 
                     <img src="{{branchOffice.ImageUrl}}"></th>
@@ -58,5 +39,3 @@
 </div>
 
 
-
->>>>>>> eebebb33e43943fdd7ca899a9ec3361f5d82ed09:rent-a-car/src/app/choose-starting-branch-office/choose-starting-branch-office.component.html

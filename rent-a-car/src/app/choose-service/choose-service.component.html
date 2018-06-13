@@ -15,7 +15,7 @@
                 </thead>
                 <tbody>
                   <tr *ngFor="let service of services"
-                  routerLink="/choose-starting-branch-office"
+                  routerLink="/{{next}}"
                   (click)="OnClick(service)">
                     <th scope="row"> 
                       <img src="{{service.LogoUrl}}"></th>
@@ -23,7 +23,6 @@
                     <td>{{service.Email}}</td>
                     <td>{{service.Description}}</td>
                   </tr>
-                 
                 </tbody>
               </table>
 
