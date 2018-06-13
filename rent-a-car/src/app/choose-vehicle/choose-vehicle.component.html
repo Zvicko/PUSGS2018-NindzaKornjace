@@ -1,7 +1,54 @@
-<p>
-  choose-car works!
-</p>
-<h3>Choose vehicle:</h3>
+<div class="jumbotron">
+  <div class="container">
+      <div class="row">
+          <div class="col-md-6 offset-md-3">
+            <h3>Choose vehicle:</h3>
+            
+            <table class="table">
+              <thead class="thead-dark">
+                <tr>
+                  <th scope="col">Photo</th>
+                  <th scope="col">Model</th>
+                  <th scope="col">Producer</th>
+                  <th scope="col">Year of production</th>
+                  <th scope="col">Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let vehicle of vehicles"
+                routerLink="/choose-ending-branch-office"
+                (click)="OnClick(vehicle)">
+                  <th scope="row"> 
+                    <img src="{{vehicle.ImageUrl}}"></th>
+                  <td>{{vehicle.Model}}</td>
+                  <td>{{vehicle.Producer}}</td>
+                  <td>{{vehicle.YearOfProduction}}</td>
+                  <td>{{vehicle.Description}}</td>
+                </tr>
+               
+              </tbody>
+            </table>
+
+
+
+
+             
+      
+    </div>
+  </div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+<!-- <h3>Choose vehicle:</h3>
 <div>
   <a *ngFor="let vehicle of vehicles"
       routerLink="/choose-ending-branch-office"
@@ -18,4 +65,4 @@
 
       
   </a>
-</div>
+</div> -->
