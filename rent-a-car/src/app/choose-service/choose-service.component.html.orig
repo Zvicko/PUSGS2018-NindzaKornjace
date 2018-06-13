@@ -1,0 +1,54 @@
+<<<<<<< HEAD
+<h3>Services:</h3>
+<div>
+  <a *ngFor="let service of services"
+      routerLink={{next}}
+      (click)="OnClick(service)">
+      <img src="{{service.LogoUrl}}"> <br>
+      Name: <br>
+      {{service.Name}} <br>
+      Email:<br>
+      {{service.Email}}<br>
+      Description:<br>
+      {{service.Description}}<br>
+  </a>
+=======
+<div class="jumbotron">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+              <h3>Services:</h3>
+              
+              <table class="table">
+                <thead class="thead-dark">
+                  <tr>
+                    <th scope="col">Logo</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let service of services"
+                  routerLink="/choose-starting-branch-office"
+                  (click)="OnClick(service)">
+                    <th scope="row"> 
+                      <img src="{{service.LogoUrl}}"></th>
+                    <td>{{service.Name}}</td>
+                    <td>{{service.Email}}</td>
+                    <td>{{service.Description}}</td>
+                  </tr>
+                 
+                </tbody>
+              </table>
+
+
+
+
+               
+        
+      </div>
+    </div>
+  </div>
+>>>>>>> eebebb33e43943fdd7ca899a9ec3361f5d82ed09
+</div>
