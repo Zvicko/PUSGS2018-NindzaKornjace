@@ -16,7 +16,7 @@
                 <tbody>
                   <tr *ngFor="let service of services"
                   routerLink="/{{next}}"
-                  (click)="OnClick(service)">
+                  (click)="OnClick(service)" style="cursor: pointer;">
                     <th scope="row"> 
                       <img src="{{service.LogoUrl}}"></th>
                     <td>{{service.Name}}</td>

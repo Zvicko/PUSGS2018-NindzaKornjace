@@ -17,7 +17,7 @@
               <tbody>
                 <tr *ngFor="let vehicle of vehicles"
                 routerLink="/reservation/end/choose-branch-office"
-                (click)="OnClick(vehicle)">
+                (click)="OnClick(vehicle)" style="cursor: pointer;">
                   <th scope="row"> 
                     <img src="{{vehicle.ImageUrl}}"></th>
                   <td>{{vehicle.Model}}</td>

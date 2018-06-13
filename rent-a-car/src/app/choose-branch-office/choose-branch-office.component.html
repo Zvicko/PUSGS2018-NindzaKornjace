@@ -17,8 +17,8 @@
               <tbody>
                 <tr *ngFor="let branchOffice of branchOffices"
                 routerLink="{{next}}"
-                (click)="OnClick(branchOffice)">
-                  <th scope="row"> 
+                (click)="OnClick(branchOffice)" style="cursor: pointer;">
+                  <th scope="row" > 
                     <img src="{{branchOffice.ImageUrl}}"></th>
                   <td>{{branchOffice.Adress}}</td>
                   <td>{{branchOffice.Longitude}}</td>
