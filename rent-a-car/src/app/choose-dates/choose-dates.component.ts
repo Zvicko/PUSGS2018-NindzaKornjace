@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
 import {DataService} from '../data.service';
 
@@ -15,7 +15,7 @@ StartDate:Date;
 EndDate:Date;
 
 
-  constructor(private route: ActivatedRoute,private dataService:DataService) { }
+  constructor(private router:Router,private dataService:DataService) { }
 
   ngOnInit() {
   }
@@ -24,6 +24,15 @@ EndDate:Date;
   {
     this.dataService.setStartDate(this.StartDate);
     this.dataService.setEndDate(this.EndDate);
+    if(this.dataService.isLogedIn())
+    {
+      this.dataService.makeReservation();
+      this.router.navigate(["/user-reservations"]);
+    }
+    else
+    {
+      this.router.navigate(["/reservation/login"]);
+    }
   }
 
 }
