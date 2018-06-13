@@ -11,14 +11,19 @@ export class LoginComponent implements OnInit {
    email:string;
    password:string;
 
-  constructor(private route: ActivatedRoute,private router:Router,private dataService:DataService) { }
+  constructor(
+    private route: ActivatedRoute,
+    private router:Router,
+    private dataService:DataService) { }
 
   ngOnInit() {
   }
 
   OnClick():void {
     this.dataService.logIn(this.email,this.password);
-    if(this.route.toString().indexOf('reservation')===-1)
+    if(this.route.toString().indexOf('reservation')===-1){}
+    /*
+    if(true)
     {
     this.router.navigate(["/choose-service"]);
     }
@@ -29,5 +34,6 @@ export class LoginComponent implements OnInit {
       this.router.navigate(["/user-reservations"]);
       
     }
+    */
   }
 }

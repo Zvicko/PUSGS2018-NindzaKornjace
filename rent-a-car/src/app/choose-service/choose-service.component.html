@@ -1,7 +1,7 @@
 <h3>Services:</h3>
 <div>
   <a *ngFor="let service of services"
-      routerLink="/choose-starting-branch-office"
+      routerLink={{next}}
       (click)="OnClick(service)">
       <img src="{{service.LogoUrl}}"> <br>
       Name: <br>

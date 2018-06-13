@@ -17,11 +17,53 @@ export class DataService {
   reservations:Reservation[]=[];
   logedInUser:User=null;
 
+  serviceAddBranchOffice:Service=new Service();
+
+  serviceAddVehicle:Service=new Service();
+  branchOfficeAddVehicle:BranchOffice=new BranchOffice();
+
+
   constructor() { }
 
   isLogedIn()
   {
     return this.logedInUser!==null;
+  }
+
+
+  setServiceAddVehicle(service:Service)
+  {
+    this.serviceAddVehicle=service;
+  }
+
+  getBranchOfficesAddVehicle():BranchOffice[]
+  {
+    return this.serviceAddVehicle.BranchOffices;
+  }
+
+  setBranchOfficeAddVehicle(branchOffice:BranchOffice)
+  {
+     this.branchOfficeAddVehicle=branchOffice;
+  }
+
+  addVehicle(vehicle:Vehicle)
+  {
+    this.branchOfficeAddVehicle.Vehicles.push(vehicle);
+  }
+
+  addService(newService:Service)
+  {
+    this.services.push(newService);
+  }
+
+  setSetviceMakeNewBranchOffice(service:Service)
+  {
+    this.serviceAddBranchOffice=service;
+  }
+
+  addBranchOffice(branchOffice:BranchOffice)
+  {
+    this.serviceAddBranchOffice.BranchOffices.push(branchOffice);
   }
 
 
@@ -63,26 +105,26 @@ getLogedInUsersReservations():Reservation[]
     return this.services;
   }
 
-  setService(serviceName:string)
+  setServiceReservation(service:Service)
   {
-    this.reservation.Service=this.services.find(x=>x.Name===serviceName);
+    this.reservation.Service=service;
   }
 
-  getBranchOffices():BranchOffice[]
+  getBranchOfficesReservation():BranchOffice[]
   {
      return this.reservation.Service.BranchOffices;
   }
   
-  setStartBranchOffice(adress:string)
+  setStartBranchOfficeReservation(branchOffice:BranchOffice)
   {
     var V=this.reservation;
-     V.StartBranchOffice= V.Service.BranchOffices.find(x=>x.Adress===adress);
+     V.StartBranchOffice= branchOffice;
   }
 
-  setEndBranchOffice(adress:string)
+  setEndBranchOfficeReservation(branchOffice:BranchOffice)
   {
     var V=this.reservation;
-    V.EndBranchOffice= V.Service.BranchOffices.find(x=>x.Adress===adress);
+    V.EndBranchOffice= branchOffice;
   }
 
   setStartDate(date:Date)
@@ -111,6 +153,9 @@ getLogedInUsersReservations():Reservation[]
 
 
 }
+
+
+
 
 export class Reservation{
   Service:Service;

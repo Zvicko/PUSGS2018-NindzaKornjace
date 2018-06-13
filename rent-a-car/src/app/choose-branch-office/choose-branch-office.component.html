@@ -1,8 +1,11 @@
+<p>
+  choose-branch-office works!
+</p>
 
-<h3>Choose ending branch office:</h3>
+<h3>Choose branch office:</h3>
 <div>
   <a *ngFor="let branchOffice of branchOffices"
-      routerLink="/choose-dates"
+      routerLink={{next}}
       (click)="OnClick(branchOffice)">
       <img src="{{branchOffice.ImageUrl}}"> <br>
       Adress: <br>

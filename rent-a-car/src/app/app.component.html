@@ -2,9 +2,12 @@
 <h1 style="text-align: center">Rent a car</h1>
 
 <nav class="navbar navbar-dark bg-dark">
-  <a routerLink="/choose-service">choose-service</a>
+  <a routerLink="reservation/choose-service">choose-service</a>
   <a routerLink="/create-account" *ngIf="this.dataService.isLogedIn()===false">Create account</a>
   <a routerLink="/login" *ngIf="this.dataService.isLogedIn()===false">Login</a>
+  <a routerLink="/add-service" >Add service</a>
+  <a routerLink="/add-branch-office/choose-service" >Add branch office</a>
+  <a routerLink="/add-vehicle/choose-service" >Add vehicle</a>
 </nav>
 <router-outlet></router-outlet>
 </div>
