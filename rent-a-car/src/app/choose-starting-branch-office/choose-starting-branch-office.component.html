@@ -1,4 +1,46 @@
+<div class="jumbotron">
+  <div class="container">
+      <div class="row">
+          <div class="col-md-6 offset-md-3">
+            <h3>Choose starting branch office:</h3>
+            
+            <table class="table">
+              <thead class="thead-dark">
+                <tr>
+                  <th scope="col">Logo</th>
+                  <th scope="col">Address</th>
+                  <th scope="col">Longitude</th>
+                  <th scope="col">Latitude</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let branchOffice of branchOffices"
+                routerLink="/choose-vehicle"
+                (click)="OnClick(branchOffice)">
+                  <th scope="row"> 
+                    <img src="{{branchOffice.ImageUrl}}"></th>
+                  <td>{{branchOffice.Adress}}</td>
+                  <td>{{branchOffice.Longitude}}</td>
+                  <td>{{branchOffice.Latitude}}</td>
+                </tr>
+               
+              </tbody>
+            </table>
 
+
+
+
+             
+      
+    </div>
+  </div>
+</div>
+</div>
+
+
+
+
+<!-- 
 <h3>Choose starting branch office:</h3>
 <div>
   <a *ngFor="let branchOffice of branchOffices"
@@ -12,4 +54,4 @@
       Latitude:<br>
       {{branchOffice.Latitude}}<br>
   </a>
-</div>
+</div> -->
