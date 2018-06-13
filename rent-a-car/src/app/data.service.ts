@@ -14,6 +14,7 @@ export class DataService {
   services:Service[]=SERVICES;
   users:User[]=USERS;
   reservation:Reservation=new Reservation();
+  reservations:Reservation[]=[];
   logedInUser:User=null;
 
   constructor() { }
@@ -36,6 +37,20 @@ export class DataService {
       {
           return false;
       }
+  }
+
+
+getLogedInUsersReservations():Reservation[]
+{
+  
+  return this.logedInUser.Reservations;
+  
+}
+
+  makeReservation()
+  {
+    this.logedInUser.Reservations.push(this.reservation);
+    this.reservations.push(this.reservation);
   }
 
   logOut()

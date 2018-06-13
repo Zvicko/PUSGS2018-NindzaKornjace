@@ -11,6 +11,7 @@ import { ChooseStartingBranchOfficeComponent } from './choose-starting-branch-of
 import { ChooseCarComponent } from './choose-vehicle/choose-vehicle.component';
 import { ChooseEndingBranchOfficeComponent } from './choose-ending-branch-office/choose-ending-branch-office.component';
 import { ChooseDatesComponent } from './choose-dates/choose-dates.component';
+import { UserReservationsComponent } from './user-reservations/user-reservations.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { ChooseDatesComponent } from './choose-dates/choose-dates.component';
     ChooseStartingBranchOfficeComponent,
     ChooseCarComponent,
     ChooseEndingBranchOfficeComponent,
-    ChooseDatesComponent
+    ChooseDatesComponent,
+    UserReservationsComponent
     
      //ReactiveFormsModule
   ],

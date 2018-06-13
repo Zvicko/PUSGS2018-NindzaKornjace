@@ -1,5 +1,5 @@
 import { Component, OnInit,Input } from '@angular/core';
-import {  Router } from '@angular/router';
+import {  Router, ActivatedRoute } from '@angular/router';
 import { DataService } from '../data.service';
 @Component({
   selector: 'app-login',
@@ -11,13 +11,23 @@ export class LoginComponent implements OnInit {
    email:string;
    password:string;
 
-  constructor(private router:Router,private dataService:DataService) { }
+  constructor(private route: ActivatedRoute,private router:Router,private dataService:DataService) { }
 
   ngOnInit() {
   }
 
   OnClick():void {
     this.dataService.logIn(this.email,this.password);
+    if(this.route.toString().indexOf('reservation')===-1)
+    {
     this.router.navigate(["/choose-service"]);
+    }
+    else
+    {
+      
+      this.dataService.makeReservation();
+      this.router.navigate(["/user-reservations"]);
+      
+    }
   }
 }

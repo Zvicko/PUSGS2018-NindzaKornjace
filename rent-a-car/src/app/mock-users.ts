@@ -3,26 +3,26 @@ import { User } from './user';
 export const USERS: User[] = [
   {
     FirsName:"A1",
-    LastName:"A2",
-    Email:"email1.com",
-    //BirthdDate:new Date(),
-    Password:"123",
+    LastName:"A1",
+    Email:"A1",
+    //BirthdDate:Date;,
+    Password:"A1",
     Reservations:[]
   },
   {
-    FirsName:"A3",
-    LastName:"A4",
-    Email:"email2.com",
-    //BirthdDate:new Date(),
-    Password:"123",
+    FirsName:"A2",
+    LastName:"A2",
+    Email:"A2",
+    //BirthdDate:Date;,
+    Password:"A2",
     Reservations:[]
 },
 {
-    FirsName:"A5",
-    LastName:"A6",
-    Email:"email3.com",
-    //BirthdDate:new Date(),
-    Password:"123",
+    FirsName:"A3",
+    LastName:"A3",
+    Email:"A3",
+    //BirthdDate:Date;,
+    Password:"A3",
     Reservations:[]
 }
 ];

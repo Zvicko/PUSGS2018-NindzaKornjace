@@ -1,0 +1,55 @@
+<p>
+  user-reservations works!
+</p>
+<h3>User reservations:</h3>
+<div>
+  <div *ngFor="let reservation of userReservations">
+
+    <h4>Service:</h4><br>
+    <img src="{{reservation.Service.LogoUrl}}"> <br>
+    Name: <br>
+    {{reservation.Service.Name}} <br>
+    Email:<br>
+    {{reservation.Service.Email}}<br>
+    Description:<br>
+    {{reservation.Service.Description}}<br>
+
+    <h4>Start Branch Office:</h4><br>
+    <img src="{{reservation.StartBrancOffice.ImageUrl}}"> <br>
+    Adress: <br>
+    {{reservation.StartBrancOffice.Adress}} <br>
+    Longitude:<br>
+    {{reservation.StartBrancOffice.Longitude}}<br>
+    Latitude:<br>
+    {{reservation.StartBrancOffice.Latitude}}<br>
+
+    <h4>Vehicle:</h4><br>
+    <img src="{{reservation.Vehicle.ImageUrl}}"> <br>
+    Model: <br>
+    {{reservation.Vehicle.Model}} <br>
+    Producer:<br>
+    {{reservation.Vehicle.Producer}}<br>
+    Year of production:<br>
+    {{reservation.Vehicle.YearOfProduction}}<br>
+    Description:<br>
+    {{reservation.Vehicle.Description}}<br>
+
+    <h4>End Branch Office:</h4><br>
+    <img src="{{reservation.EndBranchOffice.ImageUrl}}"> <br>
+    Adress: <br>
+    {{reservation.EndBranchOffice.Adress}} <br>
+    Longitude:<br>
+    {{reservation.EndBranchOffice.Longitude}}<br>
+    Latitude:<br>
+    {{reservation.EndBranchOffice.Latitude}}<br>
+
+    <h4>Start Date:</h4><br>
+    {{reservation.EndBranchOffice.StartDate}}
+
+    <h4>End Date:</h4><br>
+    {{reservation.EndBranchOffice.EndDate}}
+   
+
+      
+  </div>
+</div>
