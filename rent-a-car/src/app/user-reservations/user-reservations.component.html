@@ -4,7 +4,7 @@
 <h3>User reservations:</h3>
 <div>
   <div *ngFor="let reservation of userReservations">
-
+    <div>
     <h4>Service:</h4>
     <img src="{{reservation.Service.LogoUrl}}"> <br>
     Name: <br>
@@ -13,7 +13,9 @@
     {{reservation.Service.Email}}<br>
     Description:<br>
     {{reservation.Service.Description}}<br>
+    </div>
 
+    <div>
     <h4>Start Branch Office:</h4>
     <img src="{{reservation.StartBranchOffice.ImageUrl}}"> <br>
     Adress: <br>
@@ -22,7 +24,9 @@
     {{reservation.StartBranchOffice.Longitude}}<br>
     Latitude:<br>
     {{reservation.StartBranchOffice.Latitude}}<br>
+    </div>
 
+    <div>
     <h4>Vehicle:</h4>
     <img src="{{reservation.Vehicle.ImageUrl}}"> <br>
     Model: <br>
@@ -33,7 +37,9 @@
     {{reservation.Vehicle.YearOfProduction}}<br>
     Description:<br>
     {{reservation.Vehicle.Description}}<br>
+    </div>
 
+    <div>
     <h4>End Branch Office:</h4>
     <img src="{{reservation.EndBranchOffice.ImageUrl}}"> <br>
     Adress: <br>
@@ -42,13 +48,15 @@
     {{reservation.EndBranchOffice.Longitude}}<br>
     Latitude:<br>
     {{reservation.EndBranchOffice.Latitude}}<br>
+    </div>
+    <div>
 
     <h4>Start Date:</h4>
     {{reservation.StartDate}}
 
     <h4>End Date:</h4>
     {{reservation.EndDate}}
-   
+    </div>
 
       
   </div>

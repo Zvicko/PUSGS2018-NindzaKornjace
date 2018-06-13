@@ -8,8 +8,8 @@ import { DataService } from '../data.service';
 })
 export class LoginComponent implements OnInit {
 
-   email:string;
-   password:string;
+   email:string="";
+   password:string="";
 
   constructor(
     private route: ActivatedRoute,
@@ -21,11 +21,9 @@ export class LoginComponent implements OnInit {
 
   OnClick():void {
     this.dataService.logIn(this.email,this.password);
-    if(this.route.toString().indexOf('reservation')===-1){}
-    /*
-    if(true)
+    if(this.route.toString().indexOf('reservation')===-1)
     {
-    this.router.navigate(["/choose-service"]);
+    this.router.navigate(["/reservation/choose-service"]);
     }
     else
     {
@@ -34,6 +32,6 @@ export class LoginComponent implements OnInit {
       this.router.navigate(["/user-reservations"]);
       
     }
-    */
+    
   }
 }

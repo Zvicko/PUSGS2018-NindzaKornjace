@@ -2,16 +2,14 @@
 <div  style="text-align: center" class="jumbotron bg-primmary text-black">
     <h3>Log in</h3>
 
-  
-  <form clas="user-form"  #f="ngForm">
   <div class="form-row">
     <div class="form-group col-md-6 offset-md-3">
     
     
     <div class="form-group">
       <label for="email">Username ( email address):</label>
-      <input type="text" class="form-control" name="email" [(ngModel)]="email" #emailLocal="ngModel" [ngClass]="{ 'is-invalid': f.submitted && email.invalid }" required email />
-      <div *ngIf="f.submitted && email.invalid" class="invalid-feedback">
+      <input type="text" class="form-control" name="email" [(ngModel)]="email" #emailLocal="ngModel" [ngClass]="{ 'is-invalid':  email.invalid }" required email />
+      <div *ngIf=" email.invalid" class="invalid-feedback">
           <div *ngIf="email.errors.required">Email is required</div>
           <div *ngIf="email.errors.email">Email must be a valid email address</div>
       </div>
@@ -20,8 +18,8 @@
     
   <div class="form-group">
     <label for="password">Password</label>
-    <input type="password" class="form-control" name="password" [(ngModel)]="password" #passwordLocal="ngModel" [ngClass]="{ 'is-invalid': f.submitted && password.invalid }" required minlength="6" />
-    <div *ngIf="f.submitted && password.invalid" class="invalid-feedback">
+    <input type="password" class="form-control" name="password" [(ngModel)]="password" #passwordLocal="ngModel" [ngClass]="{ 'is-invalid':  password.invalid }" required minlength="6" />
+    <div *ngIf=" password.invalid" class="invalid-feedback">
         <div *ngIf="password.errors.required">Password is required</div>
         <div *ngIf="password.errors.minlength">Password must be at least 6 characters</div>
     </div>
@@ -32,5 +30,4 @@
     
     </div>
   </div>
-  </form>
 </div>
