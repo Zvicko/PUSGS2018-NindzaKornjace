@@ -1,63 +1,34 @@
-<p>
-  user-reservations works!
-</p>
-<h3>User reservations:</h3>
-<div>
-  <div *ngFor="let reservation of userReservations">
-    <div>
-    <h4>Service:</h4>
-    <img src="{{reservation.Service.LogoUrl}}"> <br>
-    Name: <br>
-    {{reservation.Service.Name}} <br>
-    Email:<br>
-    {{reservation.Service.Email}}<br>
-    Description:<br>
-    {{reservation.Service.Description}}<br>
+<div class="jumbotron">
+  <div class="container">
+      <div class="row">
+          <div class="col-md-6 offset-md-3">
+            <h3>Reservations:</h3>
+            
+            <table class="table">
+              <thead class="thead-dark">
+                <tr>
+                  <th scope="col">Service Name</th>
+                  <th scope="col">StartBranchOffice Adress</th>
+                  <th scope="col">StartDate</th>
+                  <th scope="col">EndBranchOffice Adress</th>
+                  <th scope="col">EndDate</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let reservation of userReservations"
+                
+                 style="cursor: default;">
+                  <td>{{reservation.Service.Name}}</td>
+                  <td>{{reservation.StartBranchOffice.Adress}}</td>
+                  <td>{{reservation.StartDate}} </td>
+                  <td>{{reservation.EndBranchOffice.Adress}}</td>
+                  <td>{{reservation.EndDate}} </td>
+                  
+                </tr>
+              </tbody>
+            </table>
     </div>
-
-    <div>
-    <h4>Start Branch Office:</h4>
-    <img src="{{reservation.StartBranchOffice.ImageUrl}}"> <br>
-    Adress: <br>
-    {{reservation.StartBranchOffice.Adress}} <br>
-    Longitude:<br>
-    {{reservation.StartBranchOffice.Longitude}}<br>
-    Latitude:<br>
-    {{reservation.StartBranchOffice.Latitude}}<br>
-    </div>
-
-    <div>
-    <h4>Vehicle:</h4>
-    <img src="{{reservation.Vehicle.ImageUrl}}" height="100"> <br>
-    Model: <br>
-    {{reservation.Vehicle.Model}} <br>
-    Producer:<br>
-    {{reservation.Vehicle.Producer}}<br>
-    Year of production:<br>
-    {{reservation.Vehicle.YearOfProduction}}<br>
-    Description:<br>
-    {{reservation.Vehicle.Description}}<br>
-    </div>
-
-    <div>
-    <h4>End Branch Office:</h4>
-    <img src="{{reservation.EndBranchOffice.ImageUrl}}"> <br>
-    Adress: <br>
-    {{reservation.EndBranchOffice.Adress}} <br>
-    Longitude:<br>
-    {{reservation.EndBranchOffice.Longitude}}<br>
-    Latitude:<br>
-    {{reservation.EndBranchOffice.Latitude}}<br>
-    </div>
-    <div>
-
-    <h4>Start Date:</h4>
-    {{reservation.StartDate}}
-
-    <h4>End Date:</h4>
-    {{reservation.EndDate}}
-    </div>
-
-      
   </div>
+</div>
 </div>

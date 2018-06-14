@@ -26,7 +26,7 @@ services:Service[];
       reader.readAsDataURL(event.target.files[0]); // read file as data url
 
       reader.onload = (event) => { // called once readAsDataURL is completed
-        this.service.LogoUrl = event.target.result;
+        this.service.LogoUrl =reader.result;
       }
     }
   }

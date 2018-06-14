@@ -22,7 +22,17 @@ export class CreateAccountComponent implements OnInit {
     this.user.Reservations=[];
   }
 
-  
+  onSelectFile(event) {
+    if (event.target.files && event.target.files[0]) {
+      var reader = new FileReader();
+
+      reader.readAsDataURL(event.target.files[0]); // read file as data url
+
+      reader.onload = (event) => { // called once readAsDataURL is completed
+        this.user.ImageUrl = reader.result;
+      }
+    }
+  }
   
   OnClick():void {
       this.dataService.createUserAccount(this.user);

@@ -3,7 +3,10 @@
         <div class="row">
             <div class="col-md-6 offset-md-3">
                 <h3>New user registration</h3>
-                    <div class="form-group">
+                <img src={{user.ImageUrl}} height="100"> <br/>
+                ImageUrl:<br>
+                <input type='file' (change)="onSelectFile($event)"><br>
+                <div class="form-group">
                         <label for="firstName">First Name</label>
                         <input type="text" class="form-control" name="firstName" [(ngModel)]="user.FirsName" #firstName="ngModel" [ngClass]="{ 'is-invalid':   firstName.invalid }" required  minlength="3" maxlength="20"/>
                         <div *ngIf=" firstName.invalid" class="invalid-feedback">

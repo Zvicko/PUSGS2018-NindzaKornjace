@@ -53,11 +53,19 @@ getVehiclesVehicleManagement():Vehicle[]
 
 isAdmin():boolean
 {
+  if(this.logedInUser===null || this.logedInUser===undefined)
+  {
+    return false;
+  }
   return this.logedInUser.Role===Role.Admin
 }
 
 isManager():boolean
 {
+  if(this.logedInUser===null || this.logedInUser===undefined)
+  {
+    return false;
+  }
   return this.logedInUser.Role===Role.Manager
 }
 

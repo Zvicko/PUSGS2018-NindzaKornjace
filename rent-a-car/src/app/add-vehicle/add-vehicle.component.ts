@@ -27,7 +27,7 @@ export class AddVehicleComponent implements OnInit {
       reader.readAsDataURL(event.target.files[0]); // read file as data url
 
       reader.onload = (event) => { // called once readAsDataURL is completed
-        this.vehicle.ImageUrl = event.target.result;
+        this.vehicle.ImageUrl = reader.result;
       }
     }
   }

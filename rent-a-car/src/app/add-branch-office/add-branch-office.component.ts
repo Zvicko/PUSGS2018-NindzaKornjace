@@ -24,7 +24,7 @@ branchOffice:BranchOffice=new BranchOffice();
       reader.readAsDataURL(event.target.files[0]); // read file as data url
 
       reader.onload = (event) => { // called once readAsDataURL is completed
-        this.branchOffice.ImageUrl = event.target.result;
+        this.branchOffice.ImageUrl = reader.result;
       }
     }
   }
