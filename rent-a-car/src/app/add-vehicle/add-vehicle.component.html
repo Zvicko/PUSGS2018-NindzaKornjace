@@ -1,6 +1,7 @@
 <p>
   add-vehicle works!
 </p>
+<img src={{vehicle.ImageUrl}} height="100"> <br/>
 <h3>Add vehicle</h3>
 Model:<br>
 <input type="text" [(ngModel)]="vehicle.Model"><br>
@@ -8,8 +9,10 @@ Producer:<br>
 <input type="text" [(ngModel)]="vehicle.Producer"><br>
 Year of production:<br>
 <input type="number" [(ngModel)]="vehicle.YearOfProduction"><br>
+Price per hour:<br>
+<input type="number" [(ngModel)]="vehicle.PricePerHour"><br>
 Description:<br>
 <input type="text" [(ngModel)]="vehicle.Description"><br>
 ImageUrl:<br>
-<input type="text" [(ngModel)]="vehicle.ImageUrl"><br>
+<input type='file' (change)="onSelectFile($event)"><br>
 <button (click)="OnClick()">Add</button>

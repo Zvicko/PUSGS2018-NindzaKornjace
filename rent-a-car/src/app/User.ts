@@ -6,5 +6,13 @@ export class User{
     Email:string;
     BirthDate:Date;
     Password:string;
+    ImageUrl:string;
+    Role:Role;
     Reservations:Reservation[];
+}
+
+export enum Role{
+    RegularClient,
+    Manager,
+    Admin
 }

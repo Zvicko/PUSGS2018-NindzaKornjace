@@ -13,12 +13,28 @@ export class AddServiceComponent implements OnInit {
 
   constructor(private dataService:DataService) { }
 
+services:Service[];
+
   ngOnInit() {
+    this.services=this.dataService.getUnaprovedServices();
+  }
+
+  onSelectFile(event) {
+    if (event.target.files && event.target.files[0]) {
+      var reader = new FileReader();
+
+      reader.readAsDataURL(event.target.files[0]); // read file as data url
+
+      reader.onload = (event) => { // called once readAsDataURL is completed
+        this.service.LogoUrl = event.target.result;
+      }
+    }
   }
 
   OnClick()
   {
-      this.dataService.addService(this.service);
+      this.services=this.dataService.getUnaprovedServices();
+      this.dataService.addUnaprovedService(this.service);
   }
 
 }

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
-import {  Router } from '@angular/router';
+import {  Router, ActivatedRoute } from '@angular/router';
+import { User } from '../user';
+import { DataService } from '../data.service';
 
 @Component({
   selector: 'app-create-account',
@@ -9,23 +11,21 @@ import {  Router } from '@angular/router';
 })
 export class CreateAccountComponent implements OnInit {
 
-  Username:string;
-  Password:string;
-  ConfirmPassword:string;
-
+  user:User=new User();
   
-  constructor(private router:Router) {  }
+  constructor(
+    private route: ActivatedRoute,
+    private router:Router,
+    private dataService:DataService) {  }
 
   ngOnInit() {
+    this.user.Reservations=[];
   }
 
-  model: any = {};
-  onSubmit() {
-    alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.model))
-  }
-
+  
+  
   OnClick():void {
-    this.router.navigate(["/create-account/{{this.Username}}/{{this.Password}}"]);
+      this.dataService.createUserAccount(this.user);
   }
 
 }

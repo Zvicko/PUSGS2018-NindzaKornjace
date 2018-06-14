@@ -7,13 +7,16 @@ import { LoginComponent } from './login/login.component';
 import { CreateAccountComponent } from './create-account/create-account.component';
 import { ChooseServiceComponent } from './choose-service/choose-service.component';
 import { AppRoutingModule } from './/app-routing.module';
-import { ChooseCarComponent } from './choose-vehicle/choose-vehicle.component';
+import { ChooseVehicleComponent } from './choose-vehicle/choose-vehicle.component';
 import { ChooseDatesComponent } from './choose-dates/choose-dates.component';
 import { UserReservationsComponent } from './user-reservations/user-reservations.component';
 import { AddServiceComponent } from './add-service/add-service.component';
 import { AddBranchOfficeComponent } from './add-branch-office/add-branch-office.component';
 import { AddVehicleComponent } from './add-vehicle/add-vehicle.component';
 import { ChooseBranchOfficeComponent } from './choose-branch-office/choose-branch-office.component';
+import { AproveServicesComponent } from './aprove-services/aprove-services.component';
+import { AproveAccountsComponent } from './aprove-accounts/aprove-accounts.component';
+import { VehicleManagementComponent } from './vehicle-management/vehicle-management.component';
 
 @NgModule({
   declarations: [
@@ -21,13 +24,16 @@ import { ChooseBranchOfficeComponent } from './choose-branch-office/choose-branc
     LoginComponent,
     CreateAccountComponent,
     ChooseServiceComponent,
-    ChooseCarComponent,
+    ChooseVehicleComponent,
     ChooseDatesComponent,
     UserReservationsComponent,
     AddServiceComponent,
     AddBranchOfficeComponent,
     AddVehicleComponent,
-    ChooseBranchOfficeComponent
+    ChooseBranchOfficeComponent,
+    AproveServicesComponent,
+    AproveAccountsComponent,
+    VehicleManagementComponent
     
      //ReactiveFormsModule
   ],

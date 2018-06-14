@@ -1,11 +1,51 @@
 <h3>Add service</h3>
+<img src={{service.LogoUrl}} height="100"> <br/>
 Name:<br>
 <input type="text" [(ngModel)]="service.Name"><br>
 LogoUrl:<br>
-<input type="text" [(ngModel)]="service.LogoUrl"><br>
+<input type='file' (change)="onSelectFile($event)"><br>
 Email:<br>
 <input type="text" [(ngModel)]="service.Email"><br>
 Description:<br>
 <input type="text" [(ngModel)]="service.Description"><br>
 <button (click)="OnClick()">Add</button>
 
+<div class="jumbotron">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+              <h3>Unaproved Services:</h3>
+              
+              <table class="table">
+                <thead class="thead-dark">
+                  <tr>
+                    <th scope="col">Logo</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Description</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let service of services"
+                  
+                   style="cursor: default;">
+                    <th scope="row"> 
+                      <img src={{service.LogoUrl}} height="100"></th>
+                    <td>{{service.Name}}</td>
+                    <td>{{service.Email}}</td>
+                    <td>{{service.Description}}</td>
+                   
+                  </tr>
+                </tbody>
+              </table>
+  
+  
+  
+  
+               
+        
+      </div>
+    </div>
+  </div>
+  </div>

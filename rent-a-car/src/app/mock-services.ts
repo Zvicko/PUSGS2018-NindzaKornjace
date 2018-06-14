@@ -21,7 +21,8 @@ export const SERVICES: Service[] = [
                         Producer:"Producer 1",
                         YearOfProduction:2000,
                         Description:"Description 1",
-                        ImageUrl:""
+                        ImageUrl:"",
+                        PricePerHour:100
                     }
 
                 ]
@@ -38,7 +39,8 @@ export const SERVICES: Service[] = [
                         Producer:"Producer 2",
                         YearOfProduction:2000,
                         Description:"Description 2",
-                        ImageUrl:""
+                        ImageUrl:"",
+                        PricePerHour:100
                     }
 
                 ]

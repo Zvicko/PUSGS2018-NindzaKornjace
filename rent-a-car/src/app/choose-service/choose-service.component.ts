@@ -35,6 +35,10 @@ export class ChooseServiceComponent implements OnInit {
     {
       this.next="/add-vehicle/choose-branch-office";
     }
+    if(this.route.toString().indexOf('vehicle-management')!==-1)
+    {
+      this.next="/vehicle-management/choose-branch-office";
+    }
   }
 
   OnClick(service:Service)
@@ -50,6 +54,10 @@ export class ChooseServiceComponent implements OnInit {
     if(this.route.toString().indexOf('add-vehicle')!==-1)
     {
       this.dataService.setServiceAddVehicle(service);
+    }
+    if(this.route.toString().indexOf('vehicle-management')!==-1)
+    {
+      this.dataService.setServiceVehicleManagement(service);
     }
   }
 

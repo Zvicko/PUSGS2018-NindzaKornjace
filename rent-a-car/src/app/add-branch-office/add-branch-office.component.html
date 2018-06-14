@@ -1,6 +1,7 @@
 <h3>Add branch office</h3>
+<img src={{branchOffice.ImageUrl}} height="100"> <br/>
 ImageUrl:<br>
-<input type="text" [(ngModel)]="branchOffice.ImageUrl"><br>
+<input type='file' (change)="onSelectFile($event)"><br>
 Adress:<br>
 <input type="text" [(ngModel)]="branchOffice.Adress"><br>
 Longitude:<br>

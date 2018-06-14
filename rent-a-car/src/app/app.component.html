@@ -2,9 +2,13 @@
 <h1 style="text-align: center">Rent a car</h1>
 
 <nav class="navbar navbar-dark bg-dark">
-  <li><a routerLink="reservation/choose-service">choose-service</a></li>
+  <li><a routerLink="/reservation/choose-service">Choose service</a></li>
   <li><a routerLink="/create-account" *ngIf="this.dataService.isLogedIn()===false">Create account</a></li>
   <li><a routerLink="/login" *ngIf="this.dataService.isLogedIn()===false">Login</a></li>
+  <li><a routerLink="/reservation/choose-service" (click)="this.dataService.logOut()" *ngIf="this.dataService.isLogedIn()">Logout</a></li>
+  <li><a routerLink="/vehicle-management/choose-service">Vehicle management</a></li>
+  <li><a routerLink="/aprove-services">Aprove services</a></li>
+  <li><a routerLink="/aprove-accounts">Aprove accounts</a></li>
   <li class="dropdown">
     <a class="dropdown-toggle" data-toggle="dropdown" href="#">Add
     <span class="caret"></span></a>
@@ -17,9 +21,6 @@
 
 
   </li>
-  <!-- <a routerLink="/add-service" >Add service</a>
-  <a routerLink="/add-branch-office/choose-service" >Add branch office</a>
-  <a routerLink="/add-vehicle/choose-service" >Add vehicle</a> -->
 </nav>
 <router-outlet></router-outlet>
 </div>

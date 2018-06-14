@@ -20,9 +20,20 @@ export class AddVehicleComponent implements OnInit {
   ngOnInit() {
 
   }
+  onSelectFile(event) {
+    if (event.target.files && event.target.files[0]) {
+      var reader = new FileReader();
 
+      reader.readAsDataURL(event.target.files[0]); // read file as data url
+
+      reader.onload = (event) => { // called once readAsDataURL is completed
+        this.vehicle.ImageUrl = event.target.result;
+      }
+    }
+  }
   OnClick()
   {
+    this.vehicle.IsAvailable=true;
     this.dataService.addVehicle(this.vehicle);
   }
 

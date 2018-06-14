@@ -1,0 +1,39 @@
+<div class="jumbotron">
+  <div class="container">
+      <div class="row">
+          <div class="col-md-6 offset-md-3">
+            <h3>Services:</h3>
+            
+            <table class="table">
+              <thead class="thead-dark">
+                <tr>
+                  <th scope="col">LogoUrl</th>
+                  <th scope="col">Name</th>
+                  <th scope="col">Email</th>
+                  <th scope="col">Description</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let service of services"
+                
+                 style="cursor: default;">
+                  <th scope="row"> 
+                    <img src={{service.LogoUrl}} height="100"></th>
+                  <td>{{service.Name}}</td>
+                  <td>{{service.Email}}</td>
+                  <td>{{service.Description}}</td>
+                  <td><button (click)="OnClick(service)">Aprove</button></td>
+                </tr>
+              </tbody>
+            </table>
+
+
+
+
+             
+      
+    </div>
+  </div>
+</div>
+</div>

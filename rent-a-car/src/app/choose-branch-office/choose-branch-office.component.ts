@@ -37,6 +37,11 @@ export class ChooseBranchOfficeComponent implements OnInit {
       this.next='/reservation/choose-dates';
     }
     }
+    if(this.route.toString().indexOf('vehicle-management')!==-1)
+    {
+      this.branchOffices=this.dataService.getBranchOfficesVehicleManagement();
+      this.next='/vehicle-management';
+    }
   }
 
   OnClick(branchOffice:BranchOffice)
@@ -57,6 +62,10 @@ export class ChooseBranchOfficeComponent implements OnInit {
       {
         this.dataService.setEndBranchOfficeReservation(branchOffice);
       }
+    }
+    if(this.route.toString().indexOf('vehicle-management')!==-1)
+    {
+      this.dataService.setBranchOfficeVehicleManagement(branchOffice);
     }
   }
 

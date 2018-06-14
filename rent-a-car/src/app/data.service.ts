@@ -3,7 +3,7 @@ import { SERVICES } from './mock-services';
 import { Service } from './service'
 import { BranchOffice } from './branch-office';
 import { Vehicle } from './vehicle';
-import { User } from './user';
+import { User, Role } from './user';
 import { USERS } from './mock-users';
 
 @Injectable({
@@ -22,8 +22,84 @@ export class DataService {
   serviceAddVehicle:Service=new Service();
   branchOfficeAddVehicle:BranchOffice=new BranchOffice();
 
+  unaprovedUserAccounts:User[]=[];
+  unaprovedServices:Service[]=[];
+
+  serviceVehicleManagement:Service;
+  branchOfficeVehicleManagement:BranchOffice;
 
   constructor() { }
+
+setServiceVehicleManagement(service:Service)
+{
+this.serviceVehicleManagement=service;
+}
+
+getBranchOfficesVehicleManagement():BranchOffice[]
+{
+ return this.serviceVehicleManagement.BranchOffices;
+}
+
+setBranchOfficeVehicleManagement(branchOffice:BranchOffice)
+{
+  this.branchOfficeVehicleManagement=branchOffice;
+}
+
+getVehiclesVehicleManagement():Vehicle[]
+{
+ return this.branchOfficeVehicleManagement.Vehicles;
+}
+
+
+isAdmin():boolean
+{
+  return this.logedInUser.Role===Role.Admin
+}
+
+isManager():boolean
+{
+  return this.logedInUser.Role===Role.Manager
+}
+
+getUnaprovedUserAccounts():User[]
+{
+  return this.unaprovedUserAccounts;
+}
+
+getUserAccounts():User[]
+{
+  return this.users;
+}
+
+createUserAccount(user:User)
+{
+  this.unaprovedUserAccounts.push(user);
+}
+
+aproveUserAccount(user:User)
+{
+  var index = this.unaprovedUserAccounts.indexOf(user);   
+  this.unaprovedUserAccounts.splice(index, 1);
+  this.users.push(user);
+}
+
+getUnaprovedServices():Service[]
+{
+  return this.unaprovedServices;
+}
+
+addUnaprovedService(service:Service)
+{
+  this.unaprovedServices.push(service);
+}
+
+aproveService(service:Service)
+{
+  var index = this.unaprovedServices.indexOf(service);   
+  this.unaprovedServices.splice(index, 1);
+  this.services.push(service);
+}
+
 
   isLogedIn()
   {
@@ -139,16 +215,16 @@ getLogedInUsersReservations():Reservation[]
     
   }
 
-  getVehicle():Vehicle[]
+  getVehiclesReservation():Vehicle[]
   {
     return this.reservation.StartBranchOffice.Vehicles;
     
   }
 
-  setVehicle(model:string)
+  setVehicle(vechicle:Vehicle)
   {
-    var V=this.reservation;
-    V.Vehicle=V.StartBranchOffice.Vehicles.find(x=>x.Model===model);
+    this.reservation.Vehicle=vechicle;
+    
   }
 
 

@@ -9,19 +9,24 @@ import {DataService} from '../data.service';
   templateUrl: './choose-vehicle.component.html',
   styleUrls: ['./choose-vehicle.component.css']
 })
-export class ChooseCarComponent implements OnInit {
+export class ChooseVehicleComponent implements OnInit {
 
   vehicles:Vehicle[];
 
   constructor(private route: ActivatedRoute,private dataService:DataService) { }
 
   ngOnInit() {
-    this.vehicles=this.dataService.getVehicle();
+    this.vehicles=this.dataService.getVehiclesReservation();
+    
   }
 
   OnClick(vehicle:Vehicle)
   {
-    this.dataService.setVehicle(vehicle.Model);
+    
+    this.dataService.setVehicle(vehicle);
+    
+
+      
   }
 
 }

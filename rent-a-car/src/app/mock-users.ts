@@ -1,4 +1,4 @@
-import { User } from './user';
+import { User,Role } from './user';
 
 export const USERS: User[] = [
   {
@@ -7,7 +7,9 @@ export const USERS: User[] = [
     Email:"A1",
     BirthDate:null,
     Password:"A1",
-    Reservations:[]
+    ImageUrl:"",
+    Reservations:[],
+    Role:Role.RegularClient
 
    
   },
@@ -17,7 +19,9 @@ export const USERS: User[] = [
     Email:"A2",
     BirthDate:null,
     Password:"A2",
-    Reservations:[]
+    ImageUrl:"",
+    Reservations:[],
+    Role:Role.Manager
 },
 {
     FirsName:"A3",
@@ -25,6 +29,8 @@ export const USERS: User[] = [
     Email:"A3",
     BirthDate:null,
     Password:"A3",
-    Reservations:[]
+    ImageUrl:"",
+    Reservations:[],
+    Role:Role.Admin
 }
 ];
