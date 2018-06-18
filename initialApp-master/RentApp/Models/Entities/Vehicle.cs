@@ -3,30 +3,25 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Drawing;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
+
 namespace RentApp.Models.Entities
 {
     public class Vehicle
     {
-        public int Id { get; set; }
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public Guid Id { get; set; }
         public string Model { get; set; }
-        public string Manufactor { get; set; }
+        public string Producer { get; set; }
         public int YearOfProduction { get; set; }
-
-        public bool Available { get; set; }
-
-        public string VehicleImage { get; set; }
-
-        public string Description { get; set; }
-
         public double PricePerHour { get; set; }
+        public bool IsAvailable { get; set; }
+        public string VehicleImage { get; set; }
+        public string Description { get; set; }
+        public string ImageUrl { get; set; }
 
-        public VehicleType TypeOfVehicle { get; set; }
-        public List<string> Images { get; set; }
-        public List<Vehicle> Vehicles { get; set; }
-        public List<BranchOffice> BranchOffices { get; set; }
-        //public int ReservationOfVehicleId { get; set; }
-        //public Reservation ReservationOfVehicle { get; set; }
-
-        //public BranchOffice InBrancheOffice { get; set; }
+       
     }
 }

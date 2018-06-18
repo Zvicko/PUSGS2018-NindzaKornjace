@@ -1,5 +1,6 @@
 
 export class Vehicle{
+    Guid:string;
     IsAvailable:boolean;
     PricePerHour:number;
     Model:string;

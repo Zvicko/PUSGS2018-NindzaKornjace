@@ -7,8 +7,8 @@ using RentApp.Models.Entities;
 using RentApp.Persistance.Repository;
 namespace RentApp.Persistance.Repository.Interfaces
 {
-    public interface IAppUserRepository: IRepository<AppUser,int>
+    public interface IAppUserRepository: IRepository<User,int>
     {
-        IEnumerable<AppUser> GetAll(int pageIndex, int pageSize);
+        IEnumerable<User> GetAll(int pageIndex, int pageSize);
     }
 }

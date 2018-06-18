@@ -34,7 +34,7 @@ namespace RentApp.Controllers
 
         // GET: api/BranchOffices/5
         [ResponseType(typeof(BranchOffice))]
-        public IHttpActionResult GetBranchOffice(int id)
+        public IHttpActionResult GetBranchOffice(Guid id)
         {
             BranchOffice branchOffice = unitOfWork.BranchOffices.Find( b=> b.Id == id).FirstOrDefault();
             if (branchOffice == null)
@@ -47,7 +47,7 @@ namespace RentApp.Controllers
 
         // PUT: api/BranchOffices/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutBranchOffice(int id, BranchOffice branchOffice)
+        public IHttpActionResult PutBranchOffice(Guid id, BranchOffice branchOffice)
         {
             if (!ModelState.IsValid)
             {
@@ -98,7 +98,7 @@ namespace RentApp.Controllers
 
         // DELETE: api/BranchOffices/5
         [ResponseType(typeof(BranchOffice))]
-        public IHttpActionResult DeleteBranchOffice(int id)
+        public IHttpActionResult DeleteBranchOffice(Guid id)
         {
             BranchOffice branchOffice = unitOfWork.BranchOffices.Find(b=> b.Id == id).FirstOrDefault();
             if (branchOffice == null)
@@ -121,7 +121,7 @@ namespace RentApp.Controllers
             base.Dispose(disposing);
         }
 
-        private bool BranchOfficeExists(int id)
+        private bool BranchOfficeExists(Guid id)
         {
             return unitOfWork.BranchOffices.Find(b => b.Id == id).FirstOrDefault() != null;
         }

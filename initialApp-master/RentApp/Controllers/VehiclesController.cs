@@ -32,7 +32,7 @@ namespace RentApp.Controllers
 
         // GET: api/Vehicles/5
         [ResponseType(typeof(Vehicle))]
-        public IHttpActionResult GetVehicle(int id)
+        public IHttpActionResult GetVehicle(Guid id)
         {
             Vehicle vehicle = unitOfWork.Vehicles.Find(v=> v.Id == id).FirstOrDefault();
             if (vehicle == null)
@@ -45,7 +45,7 @@ namespace RentApp.Controllers
 
         // PUT: api/Vehicles/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutVehicle(int id, Vehicle vehicle)
+        public IHttpActionResult PutVehicle(Guid id, Vehicle vehicle)
         {
             if (!ModelState.IsValid)
             {
@@ -96,7 +96,7 @@ namespace RentApp.Controllers
 
         // DELETE: api/Vehicles/5
         [ResponseType(typeof(Vehicle))]
-        public IHttpActionResult DeleteVehicle(int id)
+        public IHttpActionResult DeleteVehicle(Guid id)
         {
             Vehicle vehicle = unitOfWork.Vehicles.Find(v=> v.Id == id).FirstOrDefault();
             if (vehicle == null)
@@ -119,7 +119,7 @@ namespace RentApp.Controllers
             base.Dispose(disposing);
         }
 
-        private bool VehicleExists(int id)
+        private bool VehicleExists(Guid id)
         {
             return unitOfWork.Vehicles.Find(v => v.Id == id).FirstOrDefault() != null;
         }

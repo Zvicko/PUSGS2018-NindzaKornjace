@@ -1,6 +1,7 @@
 import { Reservation } from "./data.service";
 
 export class User{
+    Guid:string;
     FirsName:string;
     LastName:string
     Email:string;

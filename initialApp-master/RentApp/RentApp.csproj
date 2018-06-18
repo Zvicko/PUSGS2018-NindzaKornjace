@@ -271,32 +271,22 @@
     <Compile Include="Controllers\ServicesController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Controllers\VehiclesController.cs" />
-    <Compile Include="Controllers\VehicleTypesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201806031439020_Initial.cs" />
-    <Compile Include="Migrations\201806031439020_Initial.Designer.cs">
-      <DependentUpon>201806031439020_Initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201806050718263_prvaMigracija.cs" />
-    <Compile Include="Migrations\201806050718263_prvaMigracija.Designer.cs">
-      <DependentUpon>201806050718263_prvaMigracija.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201806051036335_drugaMigracija.cs" />
-    <Compile Include="Migrations\201806051036335_drugaMigracija.Designer.cs">
-      <DependentUpon>201806051036335_drugaMigracija.cs</DependentUpon>
+    <Compile Include="Migrations\201806181859224_Initial.cs" />
+    <Compile Include="Migrations\201806181859224_Initial.Designer.cs">
+      <DependentUpon>201806181859224_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Entities\BranchOffice.cs" />
     <Compile Include="Models\Entities\RAIdentityUser.cs" />
-    <Compile Include="Models\Entities\AppUser.cs" />
     <Compile Include="Models\Entities\Reservation.cs" />
     <Compile Include="Models\Entities\Services.cs" />
+    <Compile Include="Models\Entities\User.cs" />
     <Compile Include="Models\Entities\Vehicle.cs" />
-    <Compile Include="Models\Entities\VehicleType.cs" />
     <Compile Include="Persistance\Repository\AppUserRepository.cs" />
     <Compile Include="Persistance\Repository\BranchOfficeRepository.cs" />
     <Compile Include="Persistance\Repository\Interfaces\IAppUserRepository.cs" />
@@ -306,12 +296,10 @@
     <Compile Include="Persistance\Repository\Interfaces\IReservationRepository.cs" />
     <Compile Include="Persistance\Repository\Interfaces\IServiceRepository.cs" />
     <Compile Include="Persistance\Repository\Interfaces\IVehicleRepository.cs" />
-    <Compile Include="Persistance\Repository\Interfaces\IVehicleTypeRepository.cs" />
     <Compile Include="Persistance\Repository\Repository.cs" />
     <Compile Include="Persistance\Repository\ReservationRepository.cs" />
     <Compile Include="Persistance\Repository\ServiceRepository.cs" />
     <Compile Include="Persistance\Repository\VehicleRepository.cs" />
-    <Compile Include="Persistance\Repository\VehicleTypeRepository.cs" />
     <Compile Include="Persistance\UnitOfWork\IUnitOfWork.cs" />
     <Compile Include="Persistance\UnitOfWork\UnitOfWork.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -395,14 +383,8 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201806031439020_Initial.resx">
-      <DependentUpon>201806031439020_Initial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201806050718263_prvaMigracija.resx">
-      <DependentUpon>201806050718263_prvaMigracija.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201806051036335_drugaMigracija.resx">
-      <DependentUpon>201806051036335_drugaMigracija.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201806181859224_Initial.resx">
+      <DependentUpon>201806181859224_Initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

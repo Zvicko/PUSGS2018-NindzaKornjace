@@ -10,11 +10,9 @@ namespace RentApp.Persistance
 {
     public class RADBContext : IdentityDbContext<RAIdentityUser>
     {
-        public virtual DbSet<AppUser> AppUsers { get; set; }
+        public virtual DbSet<User> Users { get; set; }
         public DbSet<Service> Services { get; set; }
-       
         public DbSet<Vehicle> Vehicles { get; set; }
-        public DbSet<VehicleType> VehicleTypes { get; set; }
         public DbSet<Reservation> Reservations { get; set; }
         public DbSet<BranchOffice> BrancheOffices { get; set; }
         public RADBContext() : base("name=RADB")

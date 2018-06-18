@@ -6,16 +6,22 @@
   <li><a routerLink="/create-account" *ngIf="this.dataService.isLogedIn()===false">Create account</a></li>
   <li><a routerLink="/login" *ngIf="this.dataService.isLogedIn()===false">Login</a></li>
   <li><a routerLink="/reservation/choose-service" (click)="this.dataService.logOut()" *ngIf="this.dataService.isLogedIn()">Logout</a></li>
-  <li><a routerLink="/vehicle-management/choose-service">Vehicle management</a></li>
-  <li><a routerLink="/aprove-services">Aprove services</a></li>
-  <li><a routerLink="/aprove-accounts">Aprove accounts</a></li>
   <li class="dropdown">
-    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Add
+      <a class="dropdown-toggle" data-toggle="dropdown" href="#" *ngIf="this.dataService.isAdmin()">Admin actions 
+          <span class="caret"></span></a>
+      <ul class="dropdown-menu">
+        <li><a routerLink="/aprove-services">Aprove services</a></li>
+        <li><a routerLink="/aprove-accounts">Aprove accounts</a></li>
+      </ul>
+  </li>
+  <li class="dropdown">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="#" *ngIf="this.dataService.isManager()">Manager actions 
     <span class="caret"></span></a>
     <ul class="dropdown-menu">
       <li><a routerLink="/add-service" >Add service</a></li>
       <li><a routerLink="/add-branch-office/choose-service" >Add branch office</a></li>
       <li><a routerLink="/add-vehicle/choose-service" >Add vehicle</a></li>
+      <li><a routerLink="/vehicle-management/choose-service">Vehicle management</a></li>
     </ul>
 
 

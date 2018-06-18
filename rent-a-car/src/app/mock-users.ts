@@ -2,6 +2,7 @@ import { User,Role } from './user';
 
 export const USERS: User[] = [
   {
+    Guid:"",
     FirsName:"A1",
     LastName:"A1",
     Email:"A1",
@@ -14,6 +15,7 @@ export const USERS: User[] = [
    
   },
   {
+    Guid:"",
     FirsName:"A2",
     LastName:"A2",
     Email:"A2",
@@ -24,6 +26,7 @@ export const USERS: User[] = [
     Role:Role.Manager
 },
 {
+    Guid:"",
     FirsName:"A3",
     LastName:"A3",
     Email:"A3",

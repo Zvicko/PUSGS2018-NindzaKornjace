@@ -15,8 +15,8 @@ namespace RentApp.Models.Entities
     public class RAIdentityUser : IdentityUser
     {
         [ForeignKey("AppUser")]
-        public int AppUserId { get; set; }
-        public AppUser AppUser { get; set; }
+        public Guid AppUserId { get; set; }
+        public User AppUser { get; set; }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<RAIdentityUser> manager, string authenticationType)
         {

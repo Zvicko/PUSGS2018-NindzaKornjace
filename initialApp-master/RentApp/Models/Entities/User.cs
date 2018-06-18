@@ -8,15 +8,22 @@ using System.ComponentModel.DataAnnotations;
 
 namespace RentApp.Models.Entities
 {
-    public class BranchOffice
+
+
+    public class User
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid Id { get; set; }
+        public string FirsName { get; set; }
+        public string LastName { get; set; }
+        public string Email { get; set; }
+        public DateTime? BirthDate { get; set; }
+        public string Password { get; set; }
         public string ImageUrl { get; set; }
-        public string Adress { get; set; }
-        public double Latitude { get; set; }
-        public double Longitude { get; set; }
-        public List<Vehicle> Vehicles { get; set; }
+        public bool Approved { get; set; }
+        public List<Reservation> Reservations { get; set; }
+
+    
     }
 }

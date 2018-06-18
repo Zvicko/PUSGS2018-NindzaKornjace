@@ -56,27 +56,27 @@ namespace RentApp.Migrations
                 manager.Create(role);
             }
 
-            context.AppUsers.AddOrUpdate(u => u.Id, new AppUser() { Id = 5, Name = "Admin", LastName = "Adminovic" });
-            context.AppUsers.AddOrUpdate(u => u.Id, new AppUser() { Id = 6, Name = "AppUser", LastName = "AppUserovic" });
+            context.Users.AddOrUpdate(u => u.Id, new User() {  FirsName = "Admin", LastName = "Adminovic" });
+            context.Users.AddOrUpdate(u => u.Id, new User() {  FirsName = "AppUser", LastName = "AppUserovic" });
 
             context.SaveChanges();
 
             var userStore = new UserStore<RAIdentityUser>(context);
             var userManager = new UserManager<RAIdentityUser>(userStore);
 
-            if (!context.Users.Any(u => u.UserName == "admin"))
+            if (!context.Users.Any(u => u.FirsName == "admin"))
             {
-                var _appUser = context.AppUsers.FirstOrDefault(a => a.Name == "Admin" && a.LastName == "Adminovic");
+                var _appUser = context.Users.FirstOrDefault(a => a.FirsName == "Admin" && a.LastName == "Adminovic");
                 var user = new RAIdentityUser() { Id = "admin", UserName = "admin", Email = "admin@yahoo.com", PasswordHash = RAIdentityUser.HashPassword("admin"), AppUserId = _appUser.Id };
                 userManager.Create(user);
                 userManager.AddToRole(user.Id, "Admin");
             }
 
-            if (!context.Users.Any(u => u.UserName == "appu"))
+            if (!context.Users.Any(u => u.FirsName == "appu"))
 
             {
 
-                var _appUser = context.AppUsers.FirstOrDefault(a => a.Name == "AppUser" && a.LastName == "AppUserovic");
+                var _appUser = context.Users.FirstOrDefault(a => a.FirsName == "AppUser" && a.LastName == "AppUserovic");
                 var user = new RAIdentityUser() { Id = "appu", UserName = "appu", Email = "appu@yahoo.com", PasswordHash = RAIdentityUser.HashPassword("appu"), AppUserId = _appUser.Id };
                 userManager.Create(user);
                 userManager.AddToRole(user.Id, "AppUser");

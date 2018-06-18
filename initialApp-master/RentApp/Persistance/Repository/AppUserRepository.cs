@@ -8,7 +8,7 @@ using System.Web;
 
 namespace RentApp.Persistance.Repository
 {
-    public class AppUserRepository:Repository<AppUser,int>,IAppUserRepository
+    public class AppUserRepository:Repository<User,int>,IAppUserRepository
     {
         protected RADBContext rADBContext { get { return context as RADBContext; } }
 
@@ -17,9 +17,9 @@ namespace RentApp.Persistance.Repository
 
         }
 
-        public IEnumerable<AppUser> GetAll(int pageIndex, int pageSize)
+        public IEnumerable<User> GetAll(int pageIndex, int pageSize)
         {
-            return rADBContext.AppUsers.Skip((pageIndex - 1) * pageSize).Take(pageSize);
+            return rADBContext.Users.Skip((pageIndex - 1) * pageSize).Take(pageSize);
         }
     }
 }

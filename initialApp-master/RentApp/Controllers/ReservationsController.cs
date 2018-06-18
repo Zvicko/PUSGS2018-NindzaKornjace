@@ -33,7 +33,7 @@ namespace RentApp.Controllers
 
         // GET: api/Reservations/5
         [ResponseType(typeof(Reservation))]
-        public IHttpActionResult GetReservation(string id)
+        public IHttpActionResult GetReservation(Guid id)
         {
             Reservation reservation = unitOfWork.Reservations.Find(r=> r.Id == id).FirstOrDefault();
             if (reservation == null)
@@ -46,7 +46,7 @@ namespace RentApp.Controllers
 
         // PUT: api/Reservations/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutReservation(string id, Reservation reservation)
+        public IHttpActionResult PutReservation(Guid id, Reservation reservation)
         {
             if (!ModelState.IsValid)
             {
@@ -112,7 +112,7 @@ namespace RentApp.Controllers
 
         // DELETE: api/Reservations/5
         [ResponseType(typeof(Reservation))]
-        public IHttpActionResult DeleteReservation(string id)
+        public IHttpActionResult DeleteReservation(Guid id)
         {
             Reservation reservation = unitOfWork.Reservations.Find(r=> r.Id == id).FirstOrDefault();
             if (reservation == null)
@@ -135,7 +135,7 @@ namespace RentApp.Controllers
             base.Dispose(disposing);
         }
 
-        private bool ReservationExists(string id)
+        private bool ReservationExists(Guid id)
         {
             return unitOfWork.Reservations.Find(r => r.Id == id).FirstOrDefault() != null;
         }

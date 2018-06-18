@@ -13,7 +13,6 @@ namespace RentApp.Persistance.UnitOfWork
         IBranchOfficeRepository BranchOffices { get; set; }
         IReservationRepository Reservations { get; set; }
         IVehicleRepository Vehicles { get; set; }
-        IVehicleTypeRepository VehicleTypes { get; set; }
         IServiceRepository Services { get; set; }
 
         int Complete();

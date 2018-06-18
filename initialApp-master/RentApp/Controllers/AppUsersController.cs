@@ -28,16 +28,16 @@ namespace RentApp.Controllers
 
 
         // GET: api/AppUsers
-        public IEnumerable<AppUser> GetAppUsers()
+        public IEnumerable<User> GetAppUsers()
         {
             return unitOfWork.AppUsers.GetAll();
         }
 
         // GET: api/AppUsers/5
-        [ResponseType(typeof(AppUser))]
+        [ResponseType(typeof(User))]
         public IHttpActionResult GetAppUser(int id)
         {
-            AppUser appUser =  unitOfWork.AppUsers.Get(id);
+            User appUser =  unitOfWork.AppUsers.Get(id);
             if (appUser == null)
             {
                 return NotFound();
@@ -48,7 +48,7 @@ namespace RentApp.Controllers
 
         // PUT: api/AppUsers/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutAppUser(int id, AppUser appUser)
+        public IHttpActionResult PutAppUser(Guid id, User appUser)
         {
             if (!ModelState.IsValid)
             {
@@ -83,8 +83,8 @@ namespace RentApp.Controllers
         }
 
         // POST: api/AppUsers
-        [ResponseType(typeof(AppUser))]
-        public IHttpActionResult PostAppUser(AppUser appUser)
+        [ResponseType(typeof(User))]
+        public IHttpActionResult PostAppUser(User appUser)
         {
             if (!ModelState.IsValid)
             {
@@ -98,10 +98,10 @@ namespace RentApp.Controllers
         }
 
         // DELETE: api/AppUsers/5
-        [ResponseType(typeof(AppUser))]
-        public IHttpActionResult DeleteAppUser(int id)
+        [ResponseType(typeof(User))]
+        public IHttpActionResult DeleteAppUser(Guid id)
         {
-            AppUser appUser = unitOfWork.AppUsers.Find(u=> u.Id == id).FirstOrDefault();
+            User appUser = unitOfWork.AppUsers.Find(u=> u.Id == id).FirstOrDefault();
             if (appUser == null)
             {
                 return NotFound();
@@ -122,7 +122,7 @@ namespace RentApp.Controllers
             base.Dispose(disposing);
         }
 
-        private bool AppUserExists(int id)
+        private bool AppUserExists(Guid id)
         {
             return unitOfWork.AppUsers.Find(u => u.Id == id).FirstOrDefault() != null;
         }

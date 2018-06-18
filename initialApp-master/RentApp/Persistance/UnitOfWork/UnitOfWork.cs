@@ -27,8 +27,6 @@ namespace RentApp.Persistance.UnitOfWork
         //[Dependency]
         public IVehicleRepository Vehicles { get; set; }
         //[Dependency]
-        public IVehicleTypeRepository VehicleTypes { get; set; }
-        //[Dependency]
         public IServiceRepository Services { get; set; }
 
         public int Complete()

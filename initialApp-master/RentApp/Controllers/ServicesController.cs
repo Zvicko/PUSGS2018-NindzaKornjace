@@ -31,7 +31,7 @@ namespace RentApp.Controllers
 
         // GET: api/Services/5
         [ResponseType(typeof(Service))]
-        public IHttpActionResult GetService(int id)
+        public IHttpActionResult GetService(Guid id)
         {
             Service service = unitOfWork.Services.Find(s => s.Id == id).FirstOrDefault();
             if (service == null)
@@ -44,7 +44,7 @@ namespace RentApp.Controllers
 
         // PUT: api/Services/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutService(int id, Service service)
+        public IHttpActionResult PutService(Guid id, Service service)
         {
             if (!ModelState.IsValid)
             {
@@ -95,7 +95,7 @@ namespace RentApp.Controllers
 
         // DELETE: api/Services/5
         [ResponseType(typeof(Service))]
-        public IHttpActionResult DeleteService(int id)
+        public IHttpActionResult DeleteService(Guid id)
         {
             Service service = unitOfWork.Services.Find(s=>s.Id == id).FirstOrDefault();
             if (service == null)
@@ -118,7 +118,7 @@ namespace RentApp.Controllers
             base.Dispose(disposing);
         }
 
-        private bool ServiceExists(int id)
+        private bool ServiceExists(Guid id)
         {
             return unitOfWork.Services.Find(s => s.Id == id).FirstOrDefault() != null;
         }
