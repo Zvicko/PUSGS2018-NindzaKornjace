@@ -16,7 +16,7 @@ export class ChooseVehicleComponent implements OnInit {
   constructor(private route: ActivatedRoute,private dataService:DataService) { }
 
   ngOnInit() {
-    this.vehicles=this.dataService.getVehiclesReservation();
+    this.dataService.getVehiclesReservation().subscribe(x=>this.vehicles=x);
     
   }
 

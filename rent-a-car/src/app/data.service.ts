@@ -1,17 +1,24 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import { SERVICES } from './mock-services';
 import { Service } from './service'
 import { BranchOffice } from './branch-office';
 import { Vehicle } from './vehicle';
 import { User, Role } from './user';
 import { USERS } from './mock-users';
-
+import { Reservation } from "./reservation";
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
 export class DataService {
 
-  services:Service[]=SERVICES;
+  URLServer:string="http://localhost:51680"
+  URLServices:string=this.URLServer+"/api/Services";
+  URLBranchOffices:string=this.URLServer+"/api/BranchOffices";
+  URLVehicles:string=this.URLServer+"/api/Vehicles";
+
+  services:Service[];
   users:User[]=USERS;
   reservation:Reservation=new Reservation();
   reservations:Reservation[]=[];
@@ -28,7 +35,10 @@ export class DataService {
   serviceVehicleManagement:Service;
   branchOfficeVehicleManagement:BranchOffice;
 
-  constructor() { }
+  constructor(private httpClient:HttpClient) { }
+
+ 
+
 
 setServiceVehicleManagement(service:Service)
 {
@@ -91,9 +101,10 @@ aproveUserAccount(user:User)
   this.users.push(user);
 }
 
-getUnaprovedServices():Service[]
+getUnaprovedServices():Observable<Service[]>
 {
-  return this.unaprovedServices;
+  return this.httpClient.get<Service[]>(this.URLServices+'/Unaproved');
+ 
 }
 
 addUnaprovedService(service:Service)
@@ -184,9 +195,10 @@ getLogedInUsersReservations():Reservation[]
     this.logedInUser=null;
   }
 
-  getServices():Service[]
+  getAprovedServices(): Observable<Service[]>
   {
-    return this.services;
+    return this.httpClient.get<Service[]>(this.URLServices+"/Aproved");
+    
   }
 
   setServiceReservation(service:Service)
@@ -194,21 +206,21 @@ getLogedInUsersReservations():Reservation[]
     this.reservation.Service=service;
   }
 
-  getBranchOfficesReservation():BranchOffice[]
+  getBranchOfficesReservation():Observable<BranchOffice[]>
   {
-     return this.reservation.Service.BranchOffices;
-  }
+
+    return this.httpClient.get<BranchOffice[]>(this.URLBranchOffices+'/FromService/'+this.reservation.Service.Id);
+    
+    }
   
   setStartBranchOfficeReservation(branchOffice:BranchOffice)
   {
-    var V=this.reservation;
-     V.StartBranchOffice= branchOffice;
+    this.reservation.StartBranchOffice= branchOffice;
   }
 
   setEndBranchOfficeReservation(branchOffice:BranchOffice)
   {
-    var V=this.reservation;
-    V.EndBranchOffice= branchOffice;
+    this.reservation.EndBranchOffice= branchOffice;
   }
 
   setStartDate(date:Date)
@@ -223,9 +235,10 @@ getLogedInUsersReservations():Reservation[]
     
   }
 
-  getVehiclesReservation():Vehicle[]
+  getVehiclesReservation():Observable<Vehicle[]>
   {
-    return this.reservation.StartBranchOffice.Vehicles;
+    return this.httpClient.get<Vehicle[]>(this.URLVehicles+'/FromBranchOffice/'+this.reservation.StartBranchOffice.Id);
+    
     
   }
 
@@ -239,13 +252,3 @@ getLogedInUsersReservations():Reservation[]
 }
 
 
-
-
-export class Reservation{
-  Service:Service;
-  StartBranchOffice:BranchOffice;
-  Vehicle:Vehicle;
-  EndBranchOffice:BranchOffice;
-  StartDate:Date;
-  EndDate:Date;
-}

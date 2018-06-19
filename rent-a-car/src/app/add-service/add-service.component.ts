@@ -16,7 +16,7 @@ export class AddServiceComponent implements OnInit {
 services:Service[];
 
   ngOnInit() {
-    this.services=this.dataService.getUnaprovedServices();
+    this.dataService.getUnaprovedServices().subscribe(x=>this.services=x);
   }
 
   onSelectFile(event) {
@@ -33,7 +33,7 @@ services:Service[];
 
   OnClick()
   {
-      this.services=this.dataService.getUnaprovedServices();
+      this.dataService.getUnaprovedServices().subscribe(x=>this.services=x);
       this.dataService.addUnaprovedService(this.service);
   }
 

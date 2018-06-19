@@ -22,7 +22,7 @@ export class ChooseServiceComponent implements OnInit {
 
   ngOnInit() {
     
-    this.services=this.dataService.getServices();
+    this.dataService.getAprovedServices().subscribe(x=>this.services=x);
     if(this.route.toString().indexOf('reservation')!==-1)
     {
       this.next="/reservation/start/choose-branch-office";

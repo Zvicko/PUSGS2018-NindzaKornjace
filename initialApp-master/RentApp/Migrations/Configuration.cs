@@ -1,8 +1,6 @@
 namespace RentApp.Migrations
 {
-    using Microsoft.AspNet.Identity;
-    using Microsoft.AspNet.Identity.EntityFramework;
-    using RentApp.Models.Entities;
+    using Models.Entities;
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
@@ -29,59 +27,67 @@ namespace RentApp.Migrations
             //      new Person { FullName = "Rowan Miller" }
             //    );
             //
-            if (!context.Roles.Any(r => r.Name == "Admin"))
+
+            Service ser = new Service
             {
-                var store = new RoleStore<IdentityRole>(context);
-                var manager = new RoleManager<IdentityRole>(store);
-                var role = new IdentityRole { Name = "Admin" };
-
-                manager.Create(role);
-            }
-
-            if (!context.Roles.Any(r => r.Name == "Manager"))
+                Name = "N1",
+                LogoUrl = "",
+                Email = "E1",
+                Description = "D1",
+                Aproved = true
+            };
+            context.Services.AddOrUpdate(ser);
+            BranchOffice bo1 = new BranchOffice
             {
-                var store = new RoleStore<IdentityRole>(context);
-                var manager = new RoleManager<IdentityRole>(store);
-                var role = new IdentityRole { Name = "Manager" };
-
-                manager.Create(role);
-            }
-
-            if (!context.Roles.Any(r => r.Name == "AppUser"))
+                ImageUrl = "",
+                Adress = "A1",
+                Longitude = 22,
+                Latitude = 33
+            };
+            context.BrancheOffices.AddOrUpdate(bo1);
+            Vehicle v1 = new Vehicle
             {
-                var store = new RoleStore<IdentityRole>(context);
-                var manager = new RoleManager<IdentityRole>(store);
-                var role = new IdentityRole { Name = "AppUser" };
+                PricePerHour = 333,
+                Model = "M1",
+                Producer = "P1",
+                YearOfProduction = 2000,
+                Description = "D1",
+                ImageUrl = ""
+            };
 
-                manager.Create(role);
-            }
+            context.Vehicles.AddOrUpdate(v1);
+            BranchOffice bo2 = new BranchOffice
+            {
+                ImageUrl = "",
+                Adress = "A2",
+                Longitude = 12,
+                Latitude = 23
+            };
+            context.BrancheOffices.AddOrUpdate(bo2);
+            Vehicle v2 = new Vehicle
+            {
+                PricePerHour = 332,
+                Model = "M2",
+                Producer = "P2",
+                YearOfProduction = 2001,
+                Description = "D2",
+                ImageUrl = ""
+            };
+            context.Vehicles.AddOrUpdate(v2);
 
-            context.Users.AddOrUpdate(u => u.Id, new User() {  FirsName = "Admin", LastName = "Adminovic" });
-            context.Users.AddOrUpdate(u => u.Id, new User() {  FirsName = "AppUser", LastName = "AppUserovic" });
+            ser.BranchOffices = new System.Collections.Generic.List<BranchOffice>();
+            ser.BranchOffices.Add(bo1);
+            ser.BranchOffices.Add(bo2);
+
+            bo1.Vehicles = new System.Collections.Generic.List<Vehicle>();
+            bo1.Vehicles.Add(v1);
+
+            bo2.Vehicles = new System.Collections.Generic.List<Vehicle>();
+            bo2.Vehicles.Add(v2);
 
             context.SaveChanges();
-
-            var userStore = new UserStore<RAIdentityUser>(context);
-            var userManager = new UserManager<RAIdentityUser>(userStore);
-
-            if (!context.Users.Any(u => u.FirsName == "admin"))
-            {
-                var _appUser = context.Users.FirstOrDefault(a => a.FirsName == "Admin" && a.LastName == "Adminovic");
-                var user = new RAIdentityUser() { Id = "admin", UserName = "admin", Email = "admin@yahoo.com", PasswordHash = RAIdentityUser.HashPassword("admin"), AppUserId = _appUser.Id };
-                userManager.Create(user);
-                userManager.AddToRole(user.Id, "Admin");
-            }
-
-            if (!context.Users.Any(u => u.FirsName == "appu"))
-
-            {
-
-                var _appUser = context.Users.FirstOrDefault(a => a.FirsName == "AppUser" && a.LastName == "AppUserovic");
-                var user = new RAIdentityUser() { Id = "appu", UserName = "appu", Email = "appu@yahoo.com", PasswordHash = RAIdentityUser.HashPassword("appu"), AppUserId = _appUser.Id };
-                userManager.Create(user);
-                userManager.AddToRole(user.Id, "AppUser");
-
-            }
+            
+           
         }
     }
 }

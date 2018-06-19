@@ -2,7 +2,7 @@ import { User,Role } from './user';
 
 export const USERS: User[] = [
   {
-    Guid:"",
+    Id:"",
     FirsName:"A1",
     LastName:"A1",
     Email:"A1",
@@ -10,12 +10,13 @@ export const USERS: User[] = [
     Password:"A1",
     ImageUrl:"",
     Reservations:[],
-    Role:Role.RegularClient
+    Role:Role.RegularClient,
+    Aproved:true
 
    
   },
   {
-    Guid:"",
+    Id:"",
     FirsName:"A2",
     LastName:"A2",
     Email:"A2",
@@ -23,10 +24,11 @@ export const USERS: User[] = [
     Password:"A2",
     ImageUrl:"",
     Reservations:[],
-    Role:Role.Manager
+    Role:Role.Manager,
+    Aproved:true
 },
 {
-    Guid:"",
+    Id:"",
     FirsName:"A3",
     LastName:"A3",
     Email:"A3",
@@ -34,6 +36,7 @@ export const USERS: User[] = [
     Password:"A3",
     ImageUrl:"",
     Reservations:[],
-    Role:Role.Admin
+    Role:Role.Admin,
+    Aproved:true
 }
 ];

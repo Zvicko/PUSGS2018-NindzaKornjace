@@ -135,7 +135,7 @@ namespace RentApp.Controllers
             base.Dispose(disposing);
         }
 
-        private bool ReservationExists(Guid id)
+        private bool ReservationExists(Guid? id)
         {
             return unitOfWork.Reservations.Find(r => r.Id == id).FirstOrDefault() != null;
         }

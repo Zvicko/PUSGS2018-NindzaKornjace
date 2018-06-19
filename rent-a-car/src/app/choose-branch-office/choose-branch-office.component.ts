@@ -26,14 +26,14 @@ export class ChooseBranchOfficeComponent implements OnInit {
     }
     if(this.route.toString().indexOf('reservation')!==-1)
     {
-      this.branchOffices=this.dataService.getBranchOfficesReservation();
+      this.dataService.getBranchOfficesReservation().subscribe(x=>this.branchOffices=x);
       if(this.route.toString().indexOf('start')!==-1)
     {
       this.next='/reservation/choose-vehicle';
     }
     if(this.route.toString().indexOf('end')!==-1)
     {
-      this.branchOffices=this.dataService.getBranchOfficesReservation();
+      this.dataService.getBranchOfficesReservation().subscribe(x=>this.branchOffices=x);
       this.next='/reservation/choose-dates';
     }
     }

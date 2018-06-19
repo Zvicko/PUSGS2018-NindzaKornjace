@@ -14,6 +14,7 @@ using RentApp.Persistance.UnitOfWork;
 
 namespace RentApp.Controllers
 {
+    [RoutePrefix("api/Vehicles")]
     public class VehiclesController : ApiController
     {
         //private RADBContext db = new RADBContext();
@@ -28,6 +29,13 @@ namespace RentApp.Controllers
         public IEnumerable<Vehicle> GetVehicles()
         {
             return unitOfWork.Vehicles.GetAll();
+        }
+
+        [Route("FromBranchOffice/{id}")]
+        public IEnumerable<Vehicle> GetVehicles(Guid id)
+        {
+            RADBContext context = new RADBContext();
+            return context.BrancheOffices.Include(x => x.Vehicles).First(x => x.Id.CompareTo(id) == 0).Vehicles;
         }
 
         // GET: api/Vehicles/5

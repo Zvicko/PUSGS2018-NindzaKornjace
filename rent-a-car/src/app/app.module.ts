@@ -17,6 +17,7 @@ import { ChooseBranchOfficeComponent } from './choose-branch-office/choose-branc
 import { AproveServicesComponent } from './aprove-services/aprove-services.component';
 import { AproveAccountsComponent } from './aprove-accounts/aprove-accounts.component';
 import { VehicleManagementComponent } from './vehicle-management/vehicle-management.component';
+import {  HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { VehicleManagementComponent } from './vehicle-management/vehicle-managem
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

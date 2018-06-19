@@ -18,7 +18,7 @@ export class AproveServicesComponent implements OnInit {
     private dataService:DataService) { }
 
   ngOnInit() {
-    this.services=this.dataService.getUnaprovedServices();
+    this.dataService.getUnaprovedServices().subscribe(x=>this.services=x);
   }
 
   OnClick(service:Service)

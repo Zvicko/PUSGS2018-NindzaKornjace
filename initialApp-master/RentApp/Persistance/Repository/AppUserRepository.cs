@@ -19,7 +19,7 @@ namespace RentApp.Persistance.Repository
 
         public IEnumerable<User> GetAll(int pageIndex, int pageSize)
         {
-            return rADBContext.Users.Skip((pageIndex - 1) * pageSize).Take(pageSize);
+            return rADBContext.UserAccounts.Skip((pageIndex - 1) * pageSize).Take(pageSize);
         }
     }
 }

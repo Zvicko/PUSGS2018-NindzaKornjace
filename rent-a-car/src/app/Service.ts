@@ -2,10 +2,11 @@ import {BranchOffice} from "./branch-office";
 
 
 export class Service{
-    Guid:string;
+    Id:string;
     Name:string
     LogoUrl:string
     Email:string
     Description:string
+    Aproved:boolean;
     BranchOffices:BranchOffice[]
 }

@@ -1,7 +1,8 @@
-import { Reservation } from "./data.service";
+import { Reservation } from "./reservation";
+
 
 export class User{
-    Guid:string;
+    Id:string;
     FirsName:string;
     LastName:string
     Email:string;
@@ -9,6 +10,7 @@ export class User{
     Password:string;
     ImageUrl:string;
     Role:Role;
+    Aproved:boolean;
     Reservations:Reservation[];
 }
 

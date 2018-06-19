@@ -14,6 +14,7 @@ using RentApp.Persistance.UnitOfWork;
 
 namespace RentApp.Controllers
 {
+    [RoutePrefix("api/Services")]
     public class ServicesController : ApiController
     {
         private readonly IUnitOfWork unitOfWork;
@@ -24,9 +25,18 @@ namespace RentApp.Controllers
         }
 
         // GET: api/Services
-        public IEnumerable<Service> GetServices()
+        [Route("Aproved")]
+        public IEnumerable<Service> GetAprovedServices()
         {
-            return unitOfWork.Services.GetAll();
+            RADBContext context = new RADBContext();
+            return context.Services.Where(x => x.Aproved).ToArray();
+        }
+
+        [Route("Unaproved")]
+        public IEnumerable<Service> GetUnaprovedServices()
+        {
+            RADBContext context = new RADBContext();
+            return context.Services.Where(x=>!x.Aproved).ToArray();
         }
 
         // GET: api/Services/5
