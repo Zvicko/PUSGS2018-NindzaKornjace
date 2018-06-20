@@ -17,21 +17,41 @@ export class LoginComponent implements OnInit {
     private dataService:DataService) { }
 
   ngOnInit() {
+    this.dataService.loginReturnMessage=null;
   }
 
   OnClick():void {
-    this.dataService.logIn(this.email,this.password);
-    if(this.route.toString().indexOf('reservation')===-1)
-    {
-    this.router.navigate(["/reservation/choose-service"]);
-    }
-    else
-    {
-      
-      this.dataService.makeReservation();
-      this.router.navigate(["/user-reservations"]);
-      
-    }
+    this.dataService.logIn(this.email,this.password)
+    .subscribe(x=>{
+      if(x.responce===3)
+      {
+        this.dataService.logedInUser=x.user;
+        if(this.route.toString().indexOf('reservation')===-1)
+        {
+        this.router.navigate(["/reservation/choose-service"]);
+        }
+        else
+        {
+          
+          this.dataService.makeReservation();
+          this.router.navigate(["/user-reservations"]);
+          
+        }
+      }
+      if(x.responce===1)
+      {
+        this.dataService.loginReturnMessage="This user is not subscribed.";
+      }
+      if(x.responce===2)
+      {
+        this.dataService.loginReturnMessage="This user is allready loged in.";
+      }
+      if(x.responce===4)
+      {
+        this.dataService.loginReturnMessage="Wrong password.";
+      }
+    });
+   
     
   }
 }

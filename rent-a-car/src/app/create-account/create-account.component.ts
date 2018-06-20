@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-
 import {  Router, ActivatedRoute } from '@angular/router';
 import { User } from '../user';
 import { DataService } from '../data.service';
@@ -12,7 +11,9 @@ import { DataService } from '../data.service';
 export class CreateAccountComponent implements OnInit {
 
   user:User=new User();
-  
+  result:number=-1;
+
+
   constructor(
     private route: ActivatedRoute,
     private router:Router,
@@ -35,7 +36,10 @@ export class CreateAccountComponent implements OnInit {
   }
   
   OnClick():void {
-      this.dataService.createUserAccount(this.user);
+      this.dataService.createUserAccount(this.user)
+      .subscribe(x=>{
+      this.result=x
+    });
   }
 
 }

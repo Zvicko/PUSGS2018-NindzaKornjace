@@ -9,13 +9,7 @@ export class User{
     BirthDate:Date;
     Password:string;
     ImageUrl:string;
-    Role:Role;
+    Role:string;
     Aproved:boolean;
     Reservations:Reservation[];
-}
-
-export enum Role{
-    RegularClient,
-    Manager,
-    Admin
 }

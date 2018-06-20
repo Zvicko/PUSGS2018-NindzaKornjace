@@ -36,7 +36,9 @@ namespace RentApp.Migrations
                 Description = "D1",
                 Aproved = true
             };
-            context.Services.AddOrUpdate(ser);
+            
+                context.Services.AddOrUpdate(ser);
+            
             BranchOffice bo1 = new BranchOffice
             {
                 ImageUrl = "",
@@ -44,7 +46,9 @@ namespace RentApp.Migrations
                 Longitude = 22,
                 Latitude = 33
             };
-            context.BrancheOffices.AddOrUpdate(bo1);
+           
+                context.BrancheOffices.AddOrUpdate(bo1);
+            
             Vehicle v1 = new Vehicle
             {
                 PricePerHour = 333,
@@ -54,8 +58,9 @@ namespace RentApp.Migrations
                 Description = "D1",
                 ImageUrl = ""
             };
-
-            context.Vehicles.AddOrUpdate(v1);
+            
+                context.Vehicles.AddOrUpdate(v1);
+            
             BranchOffice bo2 = new BranchOffice
             {
                 ImageUrl = "",
@@ -63,7 +68,9 @@ namespace RentApp.Migrations
                 Longitude = 12,
                 Latitude = 23
             };
-            context.BrancheOffices.AddOrUpdate(bo2);
+            
+                context.BrancheOffices.AddOrUpdate(bo2);
+            
             Vehicle v2 = new Vehicle
             {
                 PricePerHour = 332,
@@ -73,8 +80,9 @@ namespace RentApp.Migrations
                 Description = "D2",
                 ImageUrl = ""
             };
-            context.Vehicles.AddOrUpdate(v2);
-
+            
+                context.Vehicles.AddOrUpdate(v2);
+            
             ser.BranchOffices = new System.Collections.Generic.List<BranchOffice>();
             ser.BranchOffices.Add(bo1);
             ser.BranchOffices.Add(bo2);
@@ -84,6 +92,37 @@ namespace RentApp.Migrations
 
             bo2.Vehicles = new System.Collections.Generic.List<Vehicle>();
             bo2.Vehicles.Add(v2);
+
+            User user1 = new User();
+            user1.Approved = true;
+            user1.Email = "asd";
+            user1.Password = "asdasd";
+            user1.Role = "Client";
+
+            
+                context._Users.Add(user1);
+            
+            User user2 = new User();
+            user2.Approved = true;
+            user2.Email = "qwe";
+            user2.Password = "qweqwe";
+            user2.Role = "Manager";
+
+            
+                context._Users.Add(user2);
+            
+
+            User user3 = new User();
+            user3.Approved = true;
+            user3.Email = "zxc";
+            user3.Password = "zxczxc";
+            user3.Role = "Admin";
+
+            
+                context._Users.Add(user3);
+            
+
+
 
             context.SaveChanges();
             

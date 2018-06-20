@@ -38,6 +38,12 @@ namespace RentApp.Controllers
             return context.BrancheOffices.Include(x => x.Vehicles).First(x => x.Id.CompareTo(id) == 0).Vehicles;
         }
 
+        public int PostVehicle()
+        {
+            return 0;
+        }
+
+
         // GET: api/Vehicles/5
         [ResponseType(typeof(Vehicle))]
         public IHttpActionResult GetVehicle(Guid id)

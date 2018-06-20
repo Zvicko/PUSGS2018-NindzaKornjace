@@ -52,11 +52,29 @@ namespace RentApp.Controllers
         public int PostNewUser(User user)
         {
             RADBContext context = new RADBContext();
-            if(context._Users.FirstOrDefault(x => x.Email == user.Email) == default(User))
+            if(context._Users.FirstOrDefault(x => x.Email == user.Email) != default(User))
             {
                 return 0;
             }
             context._Users.Add(user);
+            context.SaveChanges();
+            return 1;
+        }
+
+        [Route("AproveNewUser")]
+        public int PostAproveNewUser(User user)
+        {
+            if(user.Id==null)
+            {
+                return 2;
+            }
+            RADBContext context = new RADBContext();
+            User u = context._Users.FirstOrDefault(x => x.Id == user.Id);
+            if (u== default(User))
+            {
+                return 0;
+            }
+            u.Approved = true;
             context.SaveChanges();
             return 1;
         }
@@ -80,12 +98,15 @@ namespace RentApp.Controllers
             {
                 return new ResponceLogin { responce = 2 };
             }
-            if(user.Password==password)
+            if (user.Password == password)
             {
-               LogedIn.Add(email);
-               return new ResponceLogin { responce = 3,user=user};
+                LogedIn.Add(email);
+                return new ResponceLogin { responce = 3, user = user };
             }
-            return new ResponceLogin { responce = 4 };
+            else
+            {
+                return new ResponceLogin { responce = 4 };
+            }
         }
 
         [Route("Logout/{email}")]

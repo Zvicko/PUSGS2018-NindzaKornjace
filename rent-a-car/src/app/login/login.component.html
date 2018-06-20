@@ -7,7 +7,7 @@
     
     
     <div class="form-group">
-      <label for="email">Username ( email address):</label>
+      <label for="email">Email address:</label>
       <input type="text" class="form-control" name="email" [(ngModel)]="email" #emailLocal="ngModel" [ngClass]="{ 'is-invalid':  email.invalid }" required email />
       <div *ngIf=" email.invalid" class="invalid-feedback">
           <div *ngIf="email.errors.required">Email is required</div>
@@ -26,8 +26,8 @@
 </div>
     
     <br>
-    <button class="btn btn-primary" (click)="OnClick()">Login</button>
-    
+    <button class="btn btn-primary" (click)="OnClick()">Login</button><br>
+    <label *ngIf=dataService.loginReturnMessage>{{dataService.loginReturnMessage}}</label>
     </div>
   </div>
 </div>

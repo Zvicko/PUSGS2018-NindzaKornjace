@@ -22,6 +22,7 @@ namespace RentApp.Models.Entities
         public string Password { get; set; }
         public string ImageUrl { get; set; }
         public bool Approved { get; set; }
+        public string Role { get; set; }
         public List<Reservation> Reservations { get; set; }
 
     

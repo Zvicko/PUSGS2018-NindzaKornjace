@@ -24,7 +24,13 @@ users:User[];
 
   OnClick(user:User)
   {
-    this.dataService.aproveUserAccount(user);
+    this.dataService.aproveUserAccount(user)
+    .subscribe(x=>{
+      if(x===1)
+      {
+        this.dataService.getUnaprovedUserAccounts().subscribe(x=>this.users=x);
+      }
+    });
   }
 
 }

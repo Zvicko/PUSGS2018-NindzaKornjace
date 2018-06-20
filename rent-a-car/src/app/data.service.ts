@@ -3,7 +3,7 @@ import { SERVICES } from './mock-services';
 import { Service } from './service'
 import { BranchOffice } from './branch-office';
 import { Vehicle } from './vehicle';
-import { User, Role } from './user';
+import { User } from './user';
 import { USERS } from './mock-users';
 import { Reservation } from "./reservation";
 import { HttpClient, HttpHeaders } from '@angular/common/http';
@@ -68,9 +68,11 @@ setBranchOfficeVehicleManagement(branchOffice:BranchOffice)
   this.branchOfficeVehicleManagement=branchOffice;
 }
 
-getVehiclesVehicleManagement():Vehicle[]///
+getVehiclesVehicleManagement():Observable<Vehicle[]>
 {
- return this.branchOfficeVehicleManagement.Vehicles;
+  return this.httpClient.get<Vehicle[]>(this.URLVehicles+'/FromBranchOffice/'+this.branchOfficeVehicleManagement.Id);
+    
+    
 }
 
 
@@ -80,7 +82,7 @@ isAdmin():boolean
   {
     return false;
   }
-  return this.logedInUser.Role===Role.Admin
+  return this.logedInUser.Role==="Admin"
 }
 
 isManager():boolean
@@ -89,7 +91,7 @@ isManager():boolean
   {
     return false;
   }
-  return this.logedInUser.Role===Role.Manager
+  return this.logedInUser.Role==="Manager"
 }
 
 getUnaprovedUserAccounts():Observable<User[]>
@@ -97,21 +99,16 @@ getUnaprovedUserAccounts():Observable<User[]>
   return this.httpClient.get<User[]>(this.URLUsers+'/UnaprovedUsers');
 }
 
-getUserAccounts():User[]///not used
+
+
+createUserAccount(user:User):Observable<number>
 {
-  return this.users;
+  return this.httpClient.post<number>(this.URLUsers+"/NewUser",user);
 }
 
-createUserAccount(user:User)///
+aproveUserAccount(user:User):Observable<number>
 {
-  this.unaprovedUserAccounts.push(user);
-}
-
-aproveUserAccount(user:User)///
-{
-  var index = this.unaprovedUserAccounts.indexOf(user);   
-  this.unaprovedUserAccounts.splice(index, 1);
-  this.users.push(user);
+  return this.httpClient.post<number>(this.URLUsers+"/AproveNewUser",user);
 }
 
 getUnaprovedServices():Observable<Service[]>
@@ -177,19 +174,13 @@ aproveService(service:Service):Observable<number>
     this.serviceAddBranchOffice.BranchOffices.push(branchOffice);
   }
 
+  loginReturnMessage:string;
 
-  logIn(email:string,password:string):boolean///
+  logIn(email:string,password:string):Observable<ResponceLogin>
   {
-    var V=this.users.find(x=>x.Email===email);
-      if(V.Password===password)
-      {
-          this.logedInUser=V;
-          return true;
-      }
-      else
-      {
-          return false;
-      }
+    return this.httpClient.get<ResponceLogin>(this.URLUsers+"/Login/"+email+"/"+password)
+    
+
   }
 
 
@@ -208,7 +199,13 @@ getLogedInUsersReservations():Reservation[]///
 
   logOut()
   {
-    this.logedInUser=null;
+    this.httpClient.get<boolean>(this.URLUsers+"/Logout/"+this.logedInUser.Email)
+    .subscribe(x=>{
+      if(x)
+      {
+        this.logedInUser=null;
+      }
+    });
   }
 
   getAprovedServices(): Observable<Service[]>
@@ -267,4 +264,7 @@ getLogedInUsersReservations():Reservation[]///
 
 }
 
-
+class ResponceLogin{
+  responce:number;
+  user:User;
+}

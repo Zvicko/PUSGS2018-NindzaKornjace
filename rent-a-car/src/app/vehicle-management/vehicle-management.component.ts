@@ -18,7 +18,7 @@ vehicles:Vehicle[];
     private dataService:DataService) { }
 
   ngOnInit() {
-    this.vehicles=this.dataService.getVehiclesVehicleManagement();
+    this.dataService.getVehiclesVehicleManagement().subscribe(x=>this.vehicles=x);
   }
 
 }
