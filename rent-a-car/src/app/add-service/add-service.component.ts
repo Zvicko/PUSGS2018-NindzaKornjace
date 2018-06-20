@@ -33,8 +33,11 @@ services:Service[];
 
   OnClick()
   {
-      this.dataService.getUnaprovedServices().subscribe(x=>this.services=x);
-      this.dataService.addUnaprovedService(this.service);
+      this.dataService.addUnaprovedService(this.service)
+      .subscribe(x=>{if(x===0)
+      {
+        this.dataService.getUnaprovedServices().subscribe(x=>this.services=x);
+      }});
   }
 
 }

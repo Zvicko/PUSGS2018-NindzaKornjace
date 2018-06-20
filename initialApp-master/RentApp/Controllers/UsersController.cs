@@ -15,23 +15,92 @@ using RentApp.Persistance.UnitOfWork;
 
 namespace RentApp.Controllers
 {
-    public class AppUsersController : ApiController
+    [RoutePrefix("api/Users")]
+    public class UsersController : ApiController
     {
-        //private RADBContext db = new RADBContext();
+        static HashSet<string> LogedIn;
+
         private readonly IUnitOfWork unitOfWork;
 
-        public AppUsersController(IUnitOfWork unitOfWork)
+        public UsersController(IUnitOfWork unitOfWork)
         {
+            if (LogedIn == null)
+            {
+                LogedIn = new HashSet<string>();
+            }
             this.unitOfWork = unitOfWork;
         }
+
 
 
 
         // GET: api/AppUsers
         public IEnumerable<User> GetAppUsers()
         {
+
             return unitOfWork.AppUsers.GetAll();
         }
+
+        [Route("UnaprovedUsers")]
+        public IEnumerable<User> GetUnaprovedUsers()
+        {
+            RADBContext context = new RADBContext();
+            return context._Users.Where(x => !x.Approved);
+        }
+
+        [Route("NewUser")]
+        public int PostNewUser(User user)
+        {
+            RADBContext context = new RADBContext();
+            if(context._Users.FirstOrDefault(x => x.Email == user.Email) == default(User))
+            {
+                return 0;
+            }
+            context._Users.Add(user);
+            context.SaveChanges();
+            return 1;
+        }
+
+        public class ResponceLogin
+        {
+            public int responce = 0;
+            public User user = null;
+        }
+
+        [Route("Login/{email}/{password}")]
+        public ResponceLogin GetLogin(string email,string password)
+        {
+            RADBContext context = new RADBContext();
+            User user = context._Users.FirstOrDefault(x => email == x.Email);
+            if (user == default(User))
+            {
+                return new ResponceLogin { responce=1};
+            }
+            if(LogedIn.Contains(user.Email))
+            {
+                return new ResponceLogin { responce = 2 };
+            }
+            if(user.Password==password)
+            {
+               LogedIn.Add(email);
+               return new ResponceLogin { responce = 3,user=user};
+            }
+            return new ResponceLogin { responce = 4 };
+        }
+
+        [Route("Logout/{email}")]
+        public bool GetLogout(string email)
+        {
+            if(LogedIn.Contains(email))
+            {
+                LogedIn.Remove(email);
+                return true;
+            }
+            return false;
+        }
+
+        
+
 
         // GET: api/AppUsers/5
         [ResponseType(typeof(User))]

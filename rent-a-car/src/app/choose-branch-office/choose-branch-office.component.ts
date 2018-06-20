@@ -21,7 +21,7 @@ export class ChooseBranchOfficeComponent implements OnInit {
   ngOnInit() {
     if(this.route.toString().indexOf('add-vehicle')!==-1)
     {
-      this.branchOffices=this.dataService.getBranchOfficesAddVehicle();
+      this.dataService.getBranchOfficesAddVehicle().subscribe(x=>this.branchOffices=x);
       this.next='/add-vehicle';
     }
     if(this.route.toString().indexOf('reservation')!==-1)
@@ -39,7 +39,7 @@ export class ChooseBranchOfficeComponent implements OnInit {
     }
     if(this.route.toString().indexOf('vehicle-management')!==-1)
     {
-      this.branchOffices=this.dataService.getBranchOfficesVehicleManagement();
+      this.dataService.getBranchOfficesVehicleManagement().subscribe(x=>this.branchOffices=x);
       this.next='/vehicle-management';
     }
   }

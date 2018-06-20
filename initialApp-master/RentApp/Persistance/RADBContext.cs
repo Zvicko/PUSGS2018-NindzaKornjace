@@ -11,7 +11,7 @@ namespace RentApp.Persistance
 {
     public class RADBContext : IdentityDbContext<RAIdentityUser>
     {
-        public DbSet<User> UserAccounts { get; set; }
+        public DbSet<User> _Users { get; set; }
         public DbSet<Service> Services { get; set; }
         public DbSet<Vehicle> Vehicles { get; set; }
         public DbSet<Reservation> Reservations { get; set; }

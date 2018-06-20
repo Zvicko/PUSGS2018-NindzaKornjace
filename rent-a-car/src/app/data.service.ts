@@ -8,15 +8,27 @@ import { USERS } from './mock-users';
 import { Reservation } from "./reservation";
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+
+const httpOptions = {
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+};
+
 @Injectable({
   providedIn: 'root'
 })
+
+
+
 export class DataService {
+
+  
 
   URLServer:string="http://localhost:51680"
   URLServices:string=this.URLServer+"/api/Services";
   URLBranchOffices:string=this.URLServer+"/api/BranchOffices";
   URLVehicles:string=this.URLServer+"/api/Vehicles";
+  URLUsers:string=this.URLServer+"/api/Users";
+
 
   services:Service[];
   users:User[]=USERS;
@@ -45,9 +57,10 @@ setServiceVehicleManagement(service:Service)
 this.serviceVehicleManagement=service;
 }
 
-getBranchOfficesVehicleManagement():BranchOffice[]
+getBranchOfficesVehicleManagement():Observable<BranchOffice[]>
 {
- return this.serviceVehicleManagement.BranchOffices;
+  return this.httpClient.get<BranchOffice[]>(this.URLBranchOffices+'/FromService/'+this.serviceVehicleManagement.Id);
+    
 }
 
 setBranchOfficeVehicleManagement(branchOffice:BranchOffice)
@@ -55,7 +68,7 @@ setBranchOfficeVehicleManagement(branchOffice:BranchOffice)
   this.branchOfficeVehicleManagement=branchOffice;
 }
 
-getVehiclesVehicleManagement():Vehicle[]
+getVehiclesVehicleManagement():Vehicle[]///
 {
  return this.branchOfficeVehicleManagement.Vehicles;
 }
@@ -79,22 +92,22 @@ isManager():boolean
   return this.logedInUser.Role===Role.Manager
 }
 
-getUnaprovedUserAccounts():User[]
+getUnaprovedUserAccounts():Observable<User[]>
 {
-  return this.unaprovedUserAccounts;
+  return this.httpClient.get<User[]>(this.URLUsers+'/UnaprovedUsers');
 }
 
-getUserAccounts():User[]
+getUserAccounts():User[]///not used
 {
   return this.users;
 }
 
-createUserAccount(user:User)
+createUserAccount(user:User)///
 {
   this.unaprovedUserAccounts.push(user);
 }
 
-aproveUserAccount(user:User)
+aproveUserAccount(user:User)///
 {
   var index = this.unaprovedUserAccounts.indexOf(user);   
   this.unaprovedUserAccounts.splice(index, 1);
@@ -107,20 +120,21 @@ getUnaprovedServices():Observable<Service[]>
  
 }
 
-addUnaprovedService(service:Service)
+addUnaprovedService(service:Service):Observable<number>
 {
-  this.unaprovedServices.push(service);
+  service.Aproved=false;
+  return this.httpClient.post<number>(this.URLServices+'/NewService',service);
+  
 }
 
-aproveService(service:Service)
+aproveService(service:Service):Observable<number>
 {
-  var index = this.unaprovedServices.indexOf(service);   
-  this.unaprovedServices.splice(index, 1);
-  this.services.push(service);
+  return this.httpClient.post<number>(this.URLServices+"/AproveService",service);
+  
 }
 
 
-  isLogedIn()
+  isLogedIn()///
   {
     return this.logedInUser!==null;
   }
@@ -131,9 +145,10 @@ aproveService(service:Service)
     this.serviceAddVehicle=service;
   }
 
-  getBranchOfficesAddVehicle():BranchOffice[]
+  getBranchOfficesAddVehicle():Observable<BranchOffice[]>
   {
-    return this.serviceAddVehicle.BranchOffices;
+    return this.httpClient.get<BranchOffice[]>(this.URLBranchOffices+'/FromService/'+this.serviceAddVehicle.Id);
+    
   }
 
   setBranchOfficeAddVehicle(branchOffice:BranchOffice)
@@ -141,14 +156,15 @@ aproveService(service:Service)
      this.branchOfficeAddVehicle=branchOffice;
   }
 
-  addVehicle(vehicle:Vehicle)
+  addVehicle(vehicle:Vehicle)///
   {
     this.branchOfficeAddVehicle.Vehicles.push(vehicle);
   }
 
-  addService(newService:Service)
+  addService(newService:Service):Observable<number>
   {
-    this.services.push(newService);
+    newService.Aproved=false;
+    return this.httpClient.post<number>(this.URLServices+'/NewService',newService);
   }
 
   setSetviceMakeNewBranchOffice(service:Service)
@@ -156,13 +172,13 @@ aproveService(service:Service)
     this.serviceAddBranchOffice=service;
   }
 
-  addBranchOffice(branchOffice:BranchOffice)
+  addBranchOffice(branchOffice:BranchOffice)///
   {
     this.serviceAddBranchOffice.BranchOffices.push(branchOffice);
   }
 
 
-  logIn(email:string,password:string):boolean
+  logIn(email:string,password:string):boolean///
   {
     var V=this.users.find(x=>x.Email===email);
       if(V.Password===password)
@@ -177,14 +193,14 @@ aproveService(service:Service)
   }
 
 
-getLogedInUsersReservations():Reservation[]
+getLogedInUsersReservations():Reservation[]///
 {
   
   return this.logedInUser.Reservations;
   
 }
 
-  makeReservation()
+  makeReservation()///
   {
     this.logedInUser.Reservations.push(this.reservation);
     this.reservations.push(this.reservation);
@@ -211,7 +227,7 @@ getLogedInUsersReservations():Reservation[]
 
     return this.httpClient.get<BranchOffice[]>(this.URLBranchOffices+'/FromService/'+this.reservation.Service.Id);
     
-    }
+  }
   
   setStartBranchOfficeReservation(branchOffice:BranchOffice)
   {

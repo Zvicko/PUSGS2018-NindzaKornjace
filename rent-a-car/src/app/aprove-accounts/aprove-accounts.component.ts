@@ -19,7 +19,7 @@ users:User[];
     private dataService:DataService) { }
 
   ngOnInit() {
-    this.users=this.dataService.getUnaprovedUserAccounts();
+    this.dataService.getUnaprovedUserAccounts().subscribe(x=>this.users=x);
   }
 
   OnClick(user:User)

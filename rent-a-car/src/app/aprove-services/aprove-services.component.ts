@@ -23,7 +23,14 @@ export class AproveServicesComponent implements OnInit {
 
   OnClick(service:Service)
   {
-      this.dataService.aproveService(service);
+      this.dataService.aproveService(service)
+      .subscribe(x=>{
+          if(x===1)
+          {
+            this.dataService.getUnaprovedServices().subscribe(x=>this.services=x);
+          }
+
+      });
   }
 
 }

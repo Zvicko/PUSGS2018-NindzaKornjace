@@ -39,6 +39,33 @@ namespace RentApp.Controllers
             return context.Services.Where(x=>!x.Aproved).ToArray();
         }
 
+        [Route("NewService")]
+        public int PostNewService(Service service)
+        {
+            if(service==null)
+            {
+                return 1;
+            }
+            RADBContext context = new RADBContext();
+            context.Services.Add(service);
+            context.SaveChanges();
+            return 0;
+        }
+        
+        [Route("AproveService")]
+        public int PostAproveNewService(Service ser)
+        {
+            RADBContext context = new RADBContext();
+            Service s = context.Services.FirstOrDefault(x=>x.Id.CompareTo(ser.Id)==0);
+            if(s==default(Service))
+            {
+                return 0;
+            }
+            s.Aproved = true;
+            context.SaveChanges();
+            return 1;
+        }
+
         // GET: api/Services/5
         [ResponseType(typeof(Service))]
         public IHttpActionResult GetService(Guid id)
