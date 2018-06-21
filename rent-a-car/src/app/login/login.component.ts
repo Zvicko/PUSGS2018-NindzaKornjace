@@ -33,7 +33,6 @@ export class LoginComponent implements OnInit {
         else
         {
           
-          this.dataService.makeReservation();
           this.router.navigate(["/user-reservations"]);
           
         }

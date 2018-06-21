@@ -38,8 +38,17 @@ namespace RentApp.Controllers
             return context.BrancheOffices.Include(x => x.Vehicles).First(x => x.Id.CompareTo(id) == 0).Vehicles;
         }
 
-        public int PostVehicle()
+        [Route("AddToBranchOffice/{id}")]
+        public int PostVehicle(Guid id, Vehicle vehicle)
         {
+            RADBContext context = new RADBContext();
+            BranchOffice bo= context.BrancheOffices.Include(x=>x.Vehicles).FirstOrDefault(x => x.Id.CompareTo(id) == 0);
+            if(bo==default(BranchOffice))
+            {
+                return -1;
+            }
+            bo.Vehicles.Add(vehicle);
+            context.SaveChanges();
             return 0;
         }
 

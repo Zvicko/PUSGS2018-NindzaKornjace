@@ -14,6 +14,7 @@ using RentApp.Persistance.UnitOfWork;
 
 namespace RentApp.Controllers
 {
+    [RoutePrefix("api/Reservations")]
     public class ReservationsController : ApiController
     {
         //private RADBContext db = new RADBContext();
@@ -26,10 +27,38 @@ namespace RentApp.Controllers
 
 
         // GET: api/Reservations
-        public IEnumerable<Reservation> GetReservations()
+        [Route("FromUser/{id}")]
+        public IEnumerable<Reservation> GetReservations(Guid id)
         {
-            return unitOfWork.Reservations.GetAll();
+            RADBContext context = new RADBContext();
+            List<Guid> reservations = new List<Guid>();
+            return context._Users
+                .Include(x => x.Reservations)
+                .Include(x => x.Reservations.Select(q=>q.Service))
+                .Include(x => x.Reservations.Select(q => q.StartBranchOffice))
+                .Include(x => x.Reservations.Select(q => q.Vehicle))
+                .Include(x => x.Reservations.Select(q => q.EndBranchOffice))
+                .FirstOrDefault(x => x.Id.CompareTo(id) == 0).Reservations;
+           
+            
+            
         }
+
+        [Route("ForUser/{id}")]
+        public int PostReservationForUser(Guid id,Reservation reservation)
+        {
+            RADBContext context = new RADBContext();
+            User u = context._Users.Include(x => x.Reservations).FirstOrDefault(x => x.Id.CompareTo(id) == 0);
+            if (u == default(User))
+            {
+                return 1;
+            }
+            u.Reservations.Add(reservation);
+            context.SaveChanges();
+            return 0;
+        }
+
+
 
         // GET: api/Reservations/5
         [ResponseType(typeof(Reservation))]

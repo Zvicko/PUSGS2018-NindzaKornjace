@@ -28,6 +28,7 @@ export class DataService {
   URLBranchOffices:string=this.URLServer+"/api/BranchOffices";
   URLVehicles:string=this.URLServer+"/api/Vehicles";
   URLUsers:string=this.URLServer+"/api/Users";
+  URLReservations:string=this.URLServer+"/api/Reservations";
 
 
   services:Service[];
@@ -131,7 +132,7 @@ aproveService(service:Service):Observable<number>
 }
 
 
-  isLogedIn()///
+  isLogedIn()
   {
     return this.logedInUser!==null;
   }
@@ -153,9 +154,10 @@ aproveService(service:Service):Observable<number>
      this.branchOfficeAddVehicle=branchOffice;
   }
 
-  addVehicle(vehicle:Vehicle)///
+  addVehicle(vehicle:Vehicle)
   {
-    this.branchOfficeAddVehicle.Vehicles.push(vehicle);
+    this.httpClient.post(this.URLVehicles+'/AddToBranchOffice/'+this.branchOfficeAddVehicle.Id,vehicle).subscribe();
+  
   }
 
   addService(newService:Service):Observable<number>
@@ -169,9 +171,10 @@ aproveService(service:Service):Observable<number>
     this.serviceAddBranchOffice=service;
   }
 
-  addBranchOffice(branchOffice:BranchOffice)///
+  addBranchOffice(branchOffice:BranchOffice)
   {
-    this.serviceAddBranchOffice.BranchOffices.push(branchOffice);
+    this.httpClient.post(this.URLBranchOffices+"/AddToService/"+this.serviceAddBranchOffice.Id,branchOffice).subscribe();
+    
   }
 
   loginReturnMessage:string;
@@ -184,17 +187,17 @@ aproveService(service:Service):Observable<number>
   }
 
 
-getLogedInUsersReservations():Reservation[]///
+getLogedInUsersReservations():Observable<Reservation[]>
 {
+  return this.httpClient.get<Reservation[]>(this.URLReservations+"/FromUser/"+this.logedInUser.Id);
   
-  return this.logedInUser.Reservations;
   
 }
 
-  makeReservation()///
+  makeReservation():Observable<any>
   {
-    this.logedInUser.Reservations.push(this.reservation);
-    this.reservations.push(this.reservation);
+    return this.httpClient.post<any>(this.URLReservations+"/ForUser/"+this.logedInUser.Id,this.reservation);
+   
   }
 
   logOut()

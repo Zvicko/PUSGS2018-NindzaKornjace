@@ -33,11 +33,31 @@ namespace RentApp.Controllers
             return unitOfWork.BranchOffices.GetAll();
         }
 
+
+
+
+
+
         [Route("FromService/{id}")]
         public IEnumerable<BranchOffice> GetBrancheOffices(Guid id)
         {
             RADBContext context = new RADBContext();
             return context.Services.Include(x=>x.BranchOffices).First(x => x.Id.CompareTo(id) == 0).BranchOffices;
+            
+        }
+
+        [Route("AddToService/{id}")]
+        public int PostBranchOffice(Guid id, BranchOffice branchOffice)
+        {
+            RADBContext context = new RADBContext();
+            Service ser = context.Services.Include(x => x.BranchOffices).First(x => x.Id.CompareTo(id) == 0);
+            if(ser==default(Service))
+            {
+                return -1;
+            }
+            ser.BranchOffices.Add(branchOffice);
+            context.SaveChanges();
+            return 0;
         }
 
         // GET: api/BranchOffices/5

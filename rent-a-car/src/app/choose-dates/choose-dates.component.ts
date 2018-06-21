@@ -26,7 +26,6 @@ EndDate:Date;
     this.dataService.setEndDate(this.EndDate);
     if(this.dataService.isLogedIn())
     {
-      this.dataService.makeReservation();
       this.router.navigate(["/user-reservations"]);
     }
     else

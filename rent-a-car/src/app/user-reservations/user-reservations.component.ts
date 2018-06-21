@@ -14,7 +14,12 @@ export class UserReservationsComponent implements OnInit {
   constructor(private dataService:DataService) { }
 
   ngOnInit() {
-    this.userReservations=this.dataService.getLogedInUsersReservations();
+    
+    this.dataService.makeReservation().subscribe(x=>{
+      this.dataService.getLogedInUsersReservations()
+      .subscribe(x=>this.userReservations=x);
+    });
+  
   }
 
 }
