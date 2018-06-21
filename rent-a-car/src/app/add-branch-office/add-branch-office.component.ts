@@ -10,7 +10,7 @@ import { BranchOffice } from '../branch-office';
 export class AddBranchOfficeComponent implements OnInit {
 
 branchOffice:BranchOffice=new BranchOffice();
-
+messages:string[]=[];
 
   constructor(private dataService:DataService) { }
 
@@ -32,6 +32,7 @@ branchOffice:BranchOffice=new BranchOffice();
 OnClick()
 {
   this.dataService.addBranchOffice(this.branchOffice);
+  this.messages.push("Added branch office");
 }
 
 

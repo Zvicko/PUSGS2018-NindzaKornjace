@@ -11,7 +11,7 @@ import { DataService } from '../data.service';
 export class AddVehicleComponent implements OnInit {
 
   vehicle:Vehicle=new Vehicle();
-
+  messages:string[]=[];
   constructor(
     private route: ActivatedRoute,
     private router:Router,
@@ -35,6 +35,7 @@ export class AddVehicleComponent implements OnInit {
   {
     this.vehicle.IsAvailable=true;
     this.dataService.addVehicle(this.vehicle);
+    this.messages.push("Added vehicle.");
   }
 
 }

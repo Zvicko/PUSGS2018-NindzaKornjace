@@ -16,3 +16,4 @@ Description:<br>
 ImageUrl:<br>
 <input type='file' (change)="onSelectFile($event)"><br>
 <button (click)="OnClick()">Add</button>
+<li *ngFor="let message of messages">{{message}}</li>

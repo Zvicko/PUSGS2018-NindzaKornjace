@@ -14,7 +14,7 @@ export class AddServiceComponent implements OnInit {
   constructor(private dataService:DataService) { }
 
 services:Service[];
-
+messages:string[]=[];
   ngOnInit() {
     this.dataService.getUnaprovedServices().subscribe(x=>this.services=x);
   }
@@ -37,7 +37,9 @@ services:Service[];
       .subscribe(x=>{if(x===0)
       {
         this.dataService.getUnaprovedServices().subscribe(x=>this.services=x);
+        this.messages.push("Added service.");
       }});
+
   }
 
 }
